@@ -45,7 +45,7 @@
            
                 
 
-                <label class="control-label mx-2">Select The Book </label>
+                <label class="control-label mx-2">Select The Book - </label>
                   <div class="input-group input-group-sm mb-3">
                   <select name="book" id="class_id" required="" class="form-control">
 													@foreach($book as $book)
