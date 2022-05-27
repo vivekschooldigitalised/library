@@ -48,7 +48,10 @@
                 <div class="input-group input-group-sm mb-3">
                   <input type="text" class="form-control" name="isbn" >
                   <span class="input-group-append">
+                  <input type="submit" class="btn btn-rounded btn-info mb-5 " value="Search">
                 </div>
+
+                
           <label> Title of Books </label>
                 <div class="input-group input-group-sm mb-3">
                   <input type="text" class="form-control" name="title" >

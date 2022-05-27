@@ -155,7 +155,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/six" class="nav-link ">
+                <a href="{{ route('bookotherdetail.view') }}" class="nav-link ">
                   <i class="icon-material-outline-business-center"></i>
                   <p>Add Other Details</p>
                 </a>
@@ -173,18 +173,24 @@
             <a href="#" class="nav-link active">
               <i class="icon-material-outline-business-center"></i>
               <p>
-                Issue Books
+                Issue/Return Book
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link ">
+                <a href="{{ route('assignbook.view') }}" class="nav-link "> 
                   <i class="icon-material-outline-business-center"></i>
                   <p>Assign Book</p>
                 </a>
               </li>
               <li class="nav-item">
+                <a href="{{ route('assignbook.view') }}" class="nav-link "> 
+                  <i class="icon-material-outline-business-center"></i>
+                  <p>Return Book</p>
+                </a>
+              </li>
+              <!-- <li class="nav-item">
                 <a href="#" class="nav-link ">
                   <i class="icon-material-outline-business-center"></i>
                   <p>See the total issued book</p>
@@ -195,17 +201,17 @@
                   <i class="icon-material-outline-business-center"></i>
                   <p>Not Returned Book</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
-          <li class="nav-item menu-close">
+          <!-- <li class="nav-item menu-close">
             <a href="#" class="nav-link active">
               <i class="icon-material-outline-business-center"></i>
               <p>
                 Return
                 <i class="right fas fa-angle-left"></i>
               </p>
-            </a>
+            </a> -->
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" class="nav-link ">
@@ -213,18 +219,18 @@
                   <p>Books Return</p>
                 </a>
               </li>
-                <li class="nav-item">
-                <a href="#" class="nav-link ">
+                <!-- <li class="nav-item">
+                <a href="/eleven" class="nav-link ">
                   <i class="icon-material-outline-business-center"></i>
                   <p>See the total issued book</p>
                 </a>
-              </li>
-              <li class="nav-item">
+              </li> -->
+              <!-- <li class="nav-item">
                 <a href="#" class="nav-link ">
                   <i class="icon-material-outline-business-center"></i>
                   <p>Not Returned Book</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
           

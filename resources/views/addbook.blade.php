@@ -44,13 +44,13 @@
               <div class="card-body">
                 <form method="post" action="{{ route('newbook.store') }}">
                 @csrf
-                <label class="control-label ">Enter The ISBN Number of Books </label>
+                <label class="control-label ">Enter The ISBN/Assession Number of Book </label>
                 <div class="input-group input-group-sm mb-3">
                   <input type="text" class="form-control" name="isbn" >
                   <span class="input-group-append">
                 </div>
 
-                <label class="control-label ">Enter The Title of Books </label>
+                <label class="control-label ">Enter The Title of Book </label>
                 <div class="input-group input-group-sm mb-3">
                   <input type="text" class="form-control" name="title" >
                   <span class="input-group-append">

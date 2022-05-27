@@ -40,9 +40,10 @@ Route::get('/four', function () {
     return view('createshelf');
 });
 
- Route::get('/six', function () {
-    return view('bookotherdetail');
- });
+Route::get('/seven', function () {
+    return view('assignbook');
+});
+
 
 
 
@@ -73,7 +74,13 @@ Route::get('Category/View', [CategoryController::class, 'CategoryView'])->name('
 
 Route::get('shelf/View', [NewshelfController::class, 'ShelfView'])->name('shelf.view');
 
+Route::get('bookotherdetail/view', [BookotherdetailController::class, 'BookotherdetailView'])->name('bookotherdetail.view');
+
 Route::POST('bookotherdetail/1', [BookotherdetailController::class, 'BookotherdetailStore'])->name('bookotherdetail.store');
+
+Route::get('assignbook/view', [BookotherdetailController::class, 'AssignbookView'])->name('assignbook.view');
+
+Route::POST('assignbook/1', [BookotherdetailController::class, 'IssueBookStore'])->name('assignbook.store');
 
 
 
