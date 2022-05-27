@@ -76,14 +76,14 @@
                          </div>
 
                          <center>
-<!-- 
+
                          @foreach($res as $res)
                              <h6>Student Class -{{ $res->language }} </h6>
                              <h6>Student Section -{{ $res->title_long }} </h6>
                              <h6>Student Section -{{ $res->pages }} </h6>
                              <h6>Student Section -{{ $res->date_published }} </h6>
                              <h6>Student Section -{{ $res->isbn13 }} </h6>
-                             @endforeach -->
+                             @endforeach
                         
 
 
