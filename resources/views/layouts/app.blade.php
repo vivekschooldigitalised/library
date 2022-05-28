@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Library</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -13,6 +13,9 @@
   <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css') }}">
+  <link rel="stylesheet" href="{{asset('dist/css/adminlte.css') }}">
+  <link rel="stylesheet" href="{{asset('dist/css/adminlte.components.css') }}">
+  <link rel="stylesheet" href="{{asset('dist/css/adminlte.plugins.min.css') }}">
     </head>
     <body class="hold-transition sidebar-mini">
 <div class="wrapper">
