@@ -40,14 +40,17 @@
 
                          <div class="card-body">
                              <form method="get" action="{{route('bookotherdetail.view')}}">
-                                 
+
                                  <div class="input-group input-group-sm mb-3">
                                      <label class="control-label ">Enter The ISBN Number</label>
-                                     <input type="text" class="form-control" name="isbn" value="{{ @$isbnno }}" required >
+                                     <input type="text" class="form-control" name="isbn" value="{{ @$isbnno }}"
+                                         required>
                                      <span class="input-group-append">
                                  </div>
 
-                                 <center><input type="submit" class="btn btn-rounded btn-info mb-5 mt-2" value="Search">
+                                 <center><input type="submit" class="btn btn-rounded btn-info mb-2 mt-1"
+                                         value="Add Other Detail">
+
                                  </center>
                              </form>
                          </div>
@@ -58,55 +61,81 @@
                                  @csrf
 
                                  @foreach($allData as $value)
-                                 
+
                                  <center>
-                                     <h3>Title Name of Book is {{ $value->name }}</h3>
+                                     <h3><u>Title Name of Book is - </u><br> {{ $value->name }}</h3>
                                  </center>
                                  <div class="input-group input-group-sm mb-3">
 
-                                     <input type="hidden" class="form-control" name="title" value="{{ $value->name }}">
+                                     <!-- <input type="hidden" class="form-control" name="title" value="{{ $value->name }}"> -->
                                      <input type="hidden" class="form-control" name="isbn" value="{{ $value->isbn }}">
+                                     <span class="input-group-append">
+                                 </div>
+                                 <label class="control-label ">Category</label>
+                                 <div class="input-group input-group-sm mb-3">
+                                     <select name="category" >
+                                         @foreach($categories as $cat)
+                                         <option value="{{ $cat->name }}">{{ $cat->name }}</option>
+
+                                         @endforeach
+                                     </select>
+                                     <span class="input-group-append">
+                                 </div>
+                                 <label class="control-label ">Shelf</label>
+                                 <div class="input-group input-group-sm mb-3">
+                                     <select name="shelf">
+                                         @foreach($newshelf as $shelf)
+                                         <option value="{{ $shelf->name }}">{{ $shelf->name }}</option>
+
+                                         @endforeach
+                                     </select>
                                      <span class="input-group-append">
                                  </div>
 
                                  <!-- <center><input type="submit" class="btn btn-rounded btn-info mb-5 mt-2" value="Search"></center> -->
+                                 <label class="control-label ">School Book Id</label>
+                                 <div class="input-group input-group-sm mb-3">
+                                     <input type="text" class="form-control" name="schoolbookid">
+                                     <span class="input-group-append">
+                                 </div>
                                  <label class="control-label ">Book Series</label>
                                  <div class="input-group input-group-sm mb-3">
-                                     <input type="text" class="form-control" name="bookseries" >
+                                     <input type="text" class="form-control" name="bookseries">
                                      <span class="input-group-append">
                                  </div>
 
                                  <label class="control-label ">Volume </label>
                                  <div class="input-group input-group-sm mb-3">
-                                     <input type="text" class="form-control" name="volume" >
+                                     <input type="text" class="form-control" name="volume">
                                      <span class="input-group-append">
                                  </div>
 
                                  <label class="control-label ">Purchase Date </label>
                                  <div class="input-group input-group-sm mb-3">
-                                     <input type="text" class="form-control" name="purchasedate" >
+                                     <input type="date" class="form-control" name="purchasedate">
                                      <span class="input-group-append">
                                  </div>
 
                                  <label class="control-label ">Bill Number </label>
                                  <div class="input-group input-group-sm mb-3">
-                                     <input type="text" class="form-control" name="billnumber" >
+                                     <input type="text" class="form-control" name="billnumber">
                                      <span class="input-group-append">
                                  </div>
 
                                  <label class="control-label ">Currency </label>
                                  <div class="input-group input-group-sm mb-3">
-                                     <input type="text" class="form-control" name="currency" >
+                                     <input type="text" class="form-control" name="currency">
                                      <span class="input-group-append">
                                  </div>
 
                                  <label class="control-label ">Current Price </label>
                                  <div class="input-group input-group-sm mb-3">
-                                     <input type="text" class="form-control" name="currentprice" >
+                                     <input type="text" class="form-control" name="currentprice">
                                      <span class="input-group-append">
                                  </div>
 
                                  <input type="submit" class="btn btn-rounded btn-info mb-5 mt-2" value="Send">
+
 
 
                                  @endforeach

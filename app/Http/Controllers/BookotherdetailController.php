@@ -7,61 +7,88 @@ use App\Models\bookotherdetail;
 use App\Models\newbook;
 use App\Models\user;
 use App\Models\issuebook;
+use App\Models\category;
+use App\Models\newshelf;
+
+use DB;
+#use Illuminate\Support\Facades\DB;
 
 class BookotherdetailController extends Controller
 {
 
     public function BookotherdetailView(Request $request)
 	{
+        // $data['categories'] = category::orderBy('id','DESC')->get();
+        $data['categories'] = category::all();
+
+    $data['newshelf'] = newshelf::orderBy('id','ASC')->get();
         $data['isbnno2'] = $request->isbn;
 		$data['allData'] = newbook::where('isbn', $request->isbn)->get();
 		
 		return view('bookotherdetail', $data);
 	}
 
+
     public function AssignbookView(Request $request)
 	{
-      
-        //$url = 'https://api2.isbndb.com/book/9789389931495';
-        $url = 'https://api2.isbndb.com/book/9789389931495';  
 
-        $restKey = '47906_0b0bccc1fa56a3032c77169bcde3ed76';  
+        if ($request->isbn == true) {
+            $isbnGet = $request->isbn;
+        }else{
+            $isbnGet = '123';
+        }
+       
         
-        $headers = array(  
-        "Content-Type: application/json",  
-        "Authorization: " . $restKey  
-        );  
-        
-        $rest = curl_init();  
-        curl_setopt($rest,CURLOPT_URL,$url);  
-        curl_setopt($rest,CURLOPT_HTTPHEADER,$headers);  
-        curl_setopt($rest,CURLOPT_RETURNTRANSFER, true);  
-        
-        $response = curl_exec($rest);  
-        
-        //echo $response;   
-        curl_close($rest);
-
-
-        //Test Code Start
-
-        $data['res'] = json_decode($response);
-
         $data['isbnno'] = $request->admission;
         $data['isbnno1'] = $request->isbn;
-
 		$data['allStudent'] = user::where('admissionnumber', $request->admission)->get();
-
 		$data['allData'] = newbook::where('isbn', $request->isbn)->get();
-		
+
+$data['data1'] = DB::select(DB::raw("SELECT newbooks.*,bookotherdetails.* from newbooks
+            JOIN bookotherdetails ON newbooks.id=bookotherdetails.isbn_id     
+            WHERE newbooks.isbn=$isbnGet"));
+
+        $data['allData2'] = bookotherdetail::where('isbn_id', $request->schoolbookid)->get();
+
+        // $data['allData1'] = issuebook::all();
+        $data['data5'] = DB::select(DB::raw("SELECT *,issuebooks.id AS idd  FROM issuebooks INNER JOIN users
+ON issuebooks.admissionnumber=users.id INNER JOIN newbooks ON issuebooks.isbn=newbooks.id
+INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id"));
+
+        $data['allData11'] = issuebook::where('duedate', $request->duedate)->get();
+
+
+       
+        
+		#dd($data);
 		return view('assignbook', $data);
 	}
 
+
+    public function AssignbookView11(Request $reqst)
+	{
+   
+        $data['data11'] = DB::select(DB::raw("SELECT *,issuebooks.id AS idd  FROM issuebooks INNER JOIN users
+            ON issuebooks.admissionnumber=users.id INNER JOIN newbooks ON issuebooks.isbn=newbooks.id
+            INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id"));
+
+            return view('bookissuereport', $data);
+	}
+
+
+
+
+
+    
     public function BookotherdetailStore(Request $reqq)
     {
+        $id_get = newbook::where('isbn', $reqq->isbn)->first();
         $bookothdtl = new bookotherdetail();
-        $bookothdtl -> isbnid = $reqq->isbn;
-        $bookothdtl -> title = $reqq->title;
+        $bookothdtl -> isbn_id = $id_get->id;
+        // $bookothdtl -> title = $reqq->title;
+        $bookothdtl  -> category = $reqq->category;
+        $bookothdtl  -> shelf = $reqq->shelf;
+        $bookothdtl  -> schoolbookid = $reqq->schoolbookid;
         $bookothdtl -> bookseries = $reqq->bookseries;
         $bookothdtl -> volume = $reqq->volume;
         $bookothdtl -> purchasedate = $reqq->purchasedate;
@@ -69,6 +96,7 @@ class BookotherdetailController extends Controller
         $bookothdtl -> currency = $reqq->currency;
         $bookothdtl -> currentprice = $reqq->currentprice;
         $bookothdtl -> save();
+        
         return redirect()->back()->with('success','New Detail for this book is inserted successfully'); 
     }
 
@@ -81,6 +109,54 @@ class BookotherdetailController extends Controller
         $bookothdt2 -> save();
         return redirect()->back()->with('success','New Detail for this book is inserted successfully'); 
     }
+
+    public function IssueBookStore1(Request $request)
+    {
+        $bookothdt6 = new issuebook();
+        $bookothdt6 -> admissionnumber = $request->admissionnumber1;
+        $bookothdt6 -> isbn = $request->isbn1;
+        // $bookothdt6 -> name = $request->name;
+        $bookothdt6 -> schoolbookid = $request->schoolbookid1;
+        $bookothdt6 -> duedate = $request->duedate;
+        $bookothdt6 -> returndate = $request->returndate;
+       // $bookothdt6 -> status = 'return';
+        $bookothdt6 -> save();
+
+        
+        return redirect()->back()->with('success','New Detail for this book is inserted successfully'); 
+    }
+
+    public function ReturnBookStore1(Request $request)
+    {
+        $bookothdt6 = new issuebook();
+      
+        $bookothdt6 -> returndate = $request->returndate;
+      
+        $bookothdt6 -> save();
+        
+        return redirect()->back()->with('success','New Detail for this book is inserted successfully'); 
+    }
+
+
+    public function ReturnBookEdit($id){
+        $editData = issuebook::find($id);
+
+       
+$data['data9'] = DB::select(DB::raw("SELECT * FROM issuebooks INNER JOIN newbooks ON issuebooks.isbn=newbooks.id 
+        INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id"));
+        return view('assignbookreturn',$data);
+    }
+
+        public function ReturnBookUpdate(Request $request,$id){
+
+           $data = issuebook::find($id);
+           $data->returndate = $request->date;
+           $data->save();
+        
+           return  redirect()->back()->with('success','Book is inserted successfully'); 
+        }
+
+    
 
 
 }

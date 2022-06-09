@@ -9,6 +9,9 @@ use App\Http\Controllers\NewshelfController;
 use App\Http\Controllers\AssignshelfbookController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\BookotherdetailController;
+use App\Http\Controllers\ReturnController;
+use App\Http\Controllers\bookotherdetails;
+use App\Http\Controllers\LibraryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -67,7 +70,10 @@ Route::get('newbook/1', [NewbookController::class, 'ScannedBookView'])->name('sc
 Route::POST('newbook/2', [NewbookController::class, 'ScannedbookStore'])->name('scanbook.store');
 
 Route::get('book/view', [NewbookController::class, 'BookView'])->name('book.view');
-Route::get('/posts', [PostController::class, 'index']);
+Route::get('book/view1', [NewbookController::class, 'BookView1'])->name('book.view1');
+
+
+Route::get('return/book/view', [ReturnController::class, 'ReturnBookView'])->name('book1.view');
 
 
 Route::get('Category/View', [CategoryController::class, 'CategoryView'])->name('category.view');
@@ -80,7 +86,20 @@ Route::POST('bookotherdetail/1', [BookotherdetailController::class, 'Bookotherde
 
 Route::get('assignbook/view', [BookotherdetailController::class, 'AssignbookView'])->name('assignbook.view');
 
+Route::get('assignbook11/view', [BookotherdetailController::class, 'AssignbookView11'])->name('assignbook11.view');
+
 Route::POST('assignbook/1', [BookotherdetailController::class, 'IssueBookStore'])->name('assignbook.store');
+
+Route::POST('assignbook/11', [BookotherdetailController::class, 'IssueBookStore1'])->name('assignbook1.store');
+
+Route::get('assignbook/edit/{id}', [BookotherdetailController::class, 'ReturnBookEdit'])->name('assignbook.edit');
+
+Route::post('assignbook/update/{id}', [BookotherdetailController::class, 'ReturnBookUpdate'])->name('assignbook.update');
+
+
+
+
+
 
 
 

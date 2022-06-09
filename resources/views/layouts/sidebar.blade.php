@@ -148,18 +148,21 @@
                   <p>Scan ISBN</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="{{ route('newbook.view') }}" class="nav-link ">
                   <i class="icon-material-outline-business-center"></i>
-                  <p>Add New Books</p>
+                  <p>Add New Book</p>
                 </a>
-              </li>
-              <li class="nav-item">
+              </li> -->
+
+              
+            
+             <li class="nav-item">
                 <a href="{{ route('bookotherdetail.view') }}" class="nav-link ">
                   <i class="icon-material-outline-business-center"></i>
                   <p>Add Other Details</p>
                 </a>
-              </li>
+              </li> 
               <li class="nav-item">
                 <a href="{{ route('book.view') }}" class="nav-link ">
                   <i class="icon-material-outline-business-center"></i>
@@ -184,12 +187,12 @@
                   <p>Assign Book</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="{{ route('assignbook.view') }}" class="nav-link "> 
+              <!-- <li class="nav-item">
+                <a href="{{ route('book1.view') }}" class="nav-link "> 
                   <i class="icon-material-outline-business-center"></i>
                   <p>Return Book</p>
                 </a>
-              </li>
+              </li> -->
               <!-- <li class="nav-item">
                 <a href="#" class="nav-link ">
                   <i class="icon-material-outline-business-center"></i>
@@ -268,7 +271,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link ">
+                <a href="{{ route('assignbook11.view') }}" class="nav-link ">
                   <i class="icon-material-outline-business-center"></i>
                   <p>Total Books Issued</p>
                 </a>

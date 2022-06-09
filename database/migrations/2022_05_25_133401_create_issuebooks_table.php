@@ -18,6 +18,7 @@ class CreateIssuebooksTable extends Migration
             $table->string('admissionnumber')->nullable();
             $table->string('isbn')->nullable();
             $table->string('duedate')->nullable();
+            $table->string('returndate')->nullable();
             $table->timestamps();
         });
     }

@@ -54,7 +54,7 @@
             <div class="col-sm-12"><table id="example1" class="table table-bordered table-striped dataTable dtr-inline" aria-describedby="example1_info"> 
                   <thead>
                   <tr>
-                    <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">ISBN No</th>
+ 
                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Book Name</th>
                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Action</th>
             
@@ -70,7 +70,7 @@
                 @foreach($categories as $categories)
 
 <tr class="odd">
-    <td>{{ $categories->name }}</td>
+
     <td>{{ $categories->name }}</td>
     <td><button type="button" class="btn btn-block btn-success">Edit </button></td>
     <td><button type="button" class="btn btn-block btn-danger">Delete </button></td>

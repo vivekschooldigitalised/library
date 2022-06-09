@@ -57,31 +57,32 @@
                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Price</th>
                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Category</th>
                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Shelf</th>
-                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Total Books</th>
+                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Status</th>
 
                   </tr>
                   </thead>
                   <tbody>
 
-                  <form method="post" action="{{ route('newbook.store') }}">
+                  <form method="post" action="{{ route('book.view') }}">
                 @csrf
 
-                @foreach($newbook as $newbook)
+                @foreach($data7 as $data7)
 
                   <tr class="odd">
-                    <td>{{ $newbook->isbn }}</td>
-                    <td>{{ $newbook->name }}</td>
-                    <td>{{ $newbook->author }}</td>
-                    <td>{{ $newbook->publisher }}</td>
-                    <td>{{ $newbook->language }}</td>
-                    <td>{{ $newbook->edition }}</td>
-                    <td>{{ $newbook->numofpages }}</td>
-                    <td>{{ $newbook->price }}</td>
-                    <td>{{ $newbook->category }}</td>
-                    <td>{{ $newbook->shelf }}</td>
-                    <td>{{ $newbook->totalbooks }}</td>
+                    <td>{{ $data7->isbn }}</td>
+                    <td>{{ $data7->name }}</td>
+                    <td>{{ $data7->authors }}</td>
+                    <td>{{ $data7->publisher }}</td>
+                    <td>{{ $data7->language }}</td>
+                    <td>{{ $data7->edition }}</td>
+                    <td>{{ $data7->pages }}</td>
+                    <td>{{ $data7->prices }}</td>
+                    <td>{{ $data7->category }}</td>
+                    <td>{{ $data7->shelf }}</td>
+                 
+                    <td>Damage/Available</td>
 
-                    <td><button type="button" class="btn btn-block btn-success">Edit </button></td>
+                    <td><a href={{ route('edit.update',$data7->isbn) }} class="btn btn-block btn-success">Edit </></td>
                   </tr>
           
                   @endforeach
@@ -89,7 +90,7 @@
                 
                 </tbody>
                   <tfoot>
-                  <tr><th rowspan="1" colspan="1">Rendering engine</th><th rowspan="1" colspan="1">Browser</th><th rowspan="1" colspan="1">Platform(s)</th><th rowspan="1" colspan="1">Engine version</th><th rowspan="1" colspan="1">CSS grade</th></tr>
+                  
                   </tfoot>
                 </table></div></div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="example1_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="example1_previous"><a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example1" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example1" data-dt-idx="6" tabindex="0" class="page-link">6</a></li><li class="paginate_button page-item next" id="example1_next"><a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li></ul></div></div></div></div>
               </div>

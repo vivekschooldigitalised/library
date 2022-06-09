@@ -81,7 +81,7 @@
               <div class="card-header">
                
                 <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
-                <a href="#" class="btn btn-primary">Click here to submit the book</a>
+                <!-- <a href="#" class="btn btn-primary">Click here to submit the book</a> -->
               </div>
             </div>
           </div>
