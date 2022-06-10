@@ -82,7 +82,7 @@
                  
                     <td>Damage/Available</td>
 
-                    <td><a href={{ route('edit.update',$data7->isbn) }} class="btn btn-block btn-success">Edit </></td>
+                  
                   </tr>
           
                   @endforeach

@@ -53,6 +53,7 @@
                                          <th scope="col">ISBN Number</th>
                                          <th scope="col">Title Name</th>
                                          <th scope="col">School Book Id</th>
+                                        
                                          <th scope="col">Due Date</th>
                                         
 
@@ -60,14 +61,19 @@
                                                                         
                                      </tr>
                                  </thead>
-                                 
+                               
                                      @foreach($data11 as $value11)
+                                     <input type="hidden" value=" {{ $ret =  $value11->returndate }}">
+                                    
+                                     @if($ret == false)
                                      <tr>
-                                     <td>{{$value11->admissionnumber }}</td>                     
+                                     <td>{{ $value11->admissionnumber }}</td>                     
                                      <td>{{ $value11->isbn }}</td> 
                                      <td>{{ $value11->name }}</td> 
                                      <td>{{ $value11->schoolbookid }}</td>  
-</tr>                                             
+                                     <td>{{ $value11->duedate }}</td>
+                                     
+</tr>                                 @endif            
                                      @endforeach
     
                                      <tbody>

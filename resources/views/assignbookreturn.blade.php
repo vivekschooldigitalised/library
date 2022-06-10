@@ -49,40 +49,31 @@
                          <div class="card-header">
                              <h3 class="card-title">Book Return</h3>
                          </div>
-                         <center>
-                             <form method="POST" action="">
+                         
+                             <form method="POST" action="{{ route('assignbook.update',@$edi) }}">
                                  @csrf
                                  <table class="table">
                                      <thead>
                                          <tr>
-                                             
-                                             <th scope="col">ISBN Number</th>
-                                             <th scope="col">Title Name</th>
-                                             <th scope="col">School Book Id</th>
-                                             <th scope="col">Return Date</th>
-                                         </tr>
-                                     </thead>
-                                     
-
-
-                                     @foreach($data9 as $data91)
-                                     <td>{{ $data91->isbn }}</td>
-                                     <td>{{ $data91->name }}</td>
-                                     <td>{{ $data91->schoolbookid }} </td>
-                                     @endforeach
-                                     <td><input type="date" name="date" required> </td>
-                                     <td><button type="submit" class="btn btn-warning">Submit</button></td>
-
+                                        
+                                            </tr>
+                                     </thead>                                   
+                                    
+                                  
+                                    
+                                       <td><center><button type="submit" class="btn btn-warning">Return</button>   </center></td>    
                                      <tbody>
                                          
                                      </tbody>
                                  </table>
+                                 
 
                  
 
-                         </center>
+                     
 
                          </form>
+                  
                          <!-- /input-group -->
                      </div>
                      <!-- /.card-body -->

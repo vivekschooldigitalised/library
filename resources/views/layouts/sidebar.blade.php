@@ -247,41 +247,41 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link ">
+                <a href="{{ route('book11.view') }}" class="nav-link ">
                   <i class="icon-material-outline-business-center"></i>
                   <p>Books Detail</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="#" class="nav-link ">
                   <i class="icon-material-outline-business-center"></i>
                   <p>Total Not Returned Books</p>
                 </a>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a href="#" class="nav-link ">
                   <i class="icon-material-outline-business-center"></i>
                   <p>Availability Of Books</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="#" class="nav-link ">
                   <i class="icon-material-outline-business-center"></i>
                   <p>Total Not Returned Books</p>
                 </a>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a href="{{ route('assignbook11.view') }}" class="nav-link ">
                   <i class="icon-material-outline-business-center"></i>
                   <p>Total Books Issued</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="#" class="nav-link ">
                   <i class="icon-material-outline-business-center"></i>
                   <p>Author Wise Books Detail</p>
                 </a>
-              </li>
+              </li> -->
               
             </ul>
           </li>

@@ -70,6 +70,10 @@ Route::get('newbook/1', [NewbookController::class, 'ScannedBookView'])->name('sc
 Route::POST('newbook/2', [NewbookController::class, 'ScannedbookStore'])->name('scanbook.store');
 
 Route::get('book/view', [NewbookController::class, 'BookView'])->name('book.view');
+
+Route::get('book11/view', [NewbookController::class, 'BookView11'])->name('book11.view');
+
+
 Route::get('book/view1', [NewbookController::class, 'BookView1'])->name('book.view1');
 
 

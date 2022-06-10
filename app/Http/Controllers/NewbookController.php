@@ -22,6 +22,13 @@ class NewbookController extends Controller
             return view('allbook', $data);  
     }
 
+    public function BookView11()
+	{
+        $data['data11'] = DB::select(DB::raw("SELECT newbooks.*,bookotherdetails.* from newbooks
+        JOIN bookotherdetails ON newbooks.id=bookotherdetails.isbn_id"));
+            return view('bookdetailreport', $data);  
+    }
+
     public function issuebookView()
 	{
             $data['newbook'] = newbook::where('isbn', $request->isbn)->get();
