@@ -53,11 +53,15 @@ $data['data1'] = DB::select(DB::raw("SELECT newbooks.*,bookotherdetails.* from n
         // $data['allData1'] = issuebook::all();
         $data['data5'] = DB::select(DB::raw("SELECT *,issuebooks.id AS idd  FROM issuebooks INNER JOIN users
 ON issuebooks.admissionnumber=users.id INNER JOIN newbooks ON issuebooks.isbn=newbooks.id
-INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id"));
+INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id ORDER BY issuebooks.id DESC LIMIT 1 "));
+
+
 
         $data['allData11'] = issuebook::where('duedate', $request->duedate)->get();
 
 
+   
+       
        
         
 		#dd($data);
@@ -75,11 +79,7 @@ INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id"));
             return view('bookissuereport', $data);
 	}
 
-
-
-
-
-    
+   
     public function BookotherdetailStore(Request $reqq)
     {
         $id_get = newbook::where('isbn', $reqq->isbn)->first();
@@ -124,7 +124,16 @@ INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id"));
 
         
         return redirect()->back()->with('success','New Detail for this book is inserted successfully'); 
-    }
+
+
+        $data['data112'] = DB::select(DB::raw("SELECT * FROM issuebooks INNER JOIN bookotherdetails
+        ON issuebooks.schoolbookid=bookotherdetails.id"));
+
+
+            return view('assignbook', $data);
+	}
+
+
 
     public function ReturnBookStore1(Request $request)
     {
@@ -140,20 +149,22 @@ INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id"));
 
     public function ReturnBookEdit($id){
         $editData = issuebook::find($id);
-
+$data['edi'] = $id;
        
 $data['data9'] = DB::select(DB::raw("SELECT * FROM issuebooks INNER JOIN newbooks ON issuebooks.isbn=newbooks.id 
-        INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id"));
+        INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id "));
         return view('assignbookreturn',$data);
     }
 
         public function ReturnBookUpdate(Request $request,$id){
 
+            $date = date("d-m-Y");
            $data = issuebook::find($id);
-           $data->returndate = $request->date;
+           $data->returndate = $date;
            $data->save();
         
            return  redirect()->back()->with('success','Book is inserted successfully'); 
+           <button onclick="{{assignbook.view">Click me</button>
         }
 
     

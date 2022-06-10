@@ -154,12 +154,11 @@
                                      <tr>
                                          <!-- <th scope="col">Student Admission Number</th> -->
 
-                                         <th scope="col">Student Admission Number</th>
+                                         <th scope="col">User</th>
                                          <th scope="col">ISBN Number</th>
                                          <th scope="col">Title Name</th>
                                          <th scope="col">School Book Id</th>
                                          <th scope="col">Due Date</th>
-                                         <th scope="col">Return Date</th>
                                          <th scope="col">Action</th> 
 
                                          
@@ -174,7 +173,6 @@
                                      <td>{{ $data5->name }} </td>
                                      <td>{{ $data5->schoolbookid }} </td>
                                      <td>{{ $data5->duedate }} </td>
-                                     <td><input type="date" name="returndate" required></td>
                                                                 
                                      <td><a href="{{ route('assignbook.edit',$data5->idd) }}" class="btn btn-info">Edit</a></td>
                                      
