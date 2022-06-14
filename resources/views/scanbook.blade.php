@@ -146,7 +146,7 @@ button:hover {
                              Edition: <input type="text" class="form-control" name="edition"><br>
                              
                              
-                                Number Of Pages: <input type="text" class="form-control" name="pages" value="{{ $res->pages }}"><br>
+                                Number Of Pages: <input type="text" class="form-control" name="pages" ><br>
                                 Prices: <input type="text" class="form-control" name="prices"><br>
                                 
                                

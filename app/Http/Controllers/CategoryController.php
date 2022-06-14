@@ -35,4 +35,31 @@ class CategoryController extends Controller
 			//return redirect()->back()->with('message',"This is Success Message");
 		//return redirect()->back()->with($notification);
 	} // End Method 
+
+	public function editCategory($id)
+	{
+			$category_data = category::find($id);
+
+			return view("edit-category", [
+			 "category" => $category_data ]);
+		
+	} 
+
+	public function updateCategory(Request $requestt)
+	{
+		$category_update = category::find($requestt->id);
+		$category_update->name = $requestt->name;
+
+		$category_update->save();
+		return redirect()->back()->with('message',"This is Success Message");
+	}
+
+
+
+
+
+
+
+
+
 }

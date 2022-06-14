@@ -53,7 +53,7 @@ $data['data1'] = DB::select(DB::raw("SELECT newbooks.*,bookotherdetails.* from n
         // $data['allData1'] = issuebook::all();
         $data['data5'] = DB::select(DB::raw("SELECT *,issuebooks.id AS idd  FROM issuebooks INNER JOIN users
 ON issuebooks.admissionnumber=users.id INNER JOIN newbooks ON issuebooks.isbn=newbooks.id
-INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id ORDER BY issuebooks.id DESC LIMIT 1 "));
+INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id ORDER BY issuebooks.id DESC LIMIT 12 "));
 
 
 
@@ -102,6 +102,7 @@ INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id ORDER
 
     public function IssueBookStore(Request $reqqq)
     {
+        
         $bookothdt2 = new issuebook();
         $bookothdt2 -> admissionnumberid = $reqqq->admissionnumberid;
         $bookothdt2 -> isbn = $reqqq->isbn;
@@ -112,25 +113,37 @@ INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id ORDER
 
     public function IssueBookStore1(Request $request)
     {
-        $bookothdt6 = new issuebook();
-        $bookothdt6 -> admissionnumber = $request->admissionnumber1;
-        $bookothdt6 -> isbn = $request->isbn1;
-        // $bookothdt6 -> name = $request->name;
-        $bookothdt6 -> schoolbookid = $request->schoolbookid1;
-        $bookothdt6 -> duedate = $request->duedate;
-        $bookothdt6 -> returndate = $request->returndate;
-       // $bookothdt6 -> status = 'return';
-        $bookothdt6 -> save();
+        $check1 = issuebook::where([
+            ['returndate' == NULL],
+        ])->first();
 
+        if($check1)
+        {
+            return "This book is already issued";
+        }
+        else
+        {
+            $bookothdt6 = new issuebook();
+            $bookothdt6 -> admissionnumber = $request->admissionnumber1;
+            $bookothdt6 -> isbn = $request->isbn1;
+            // $bookothdt6 -> name = $request->name;
+            $bookothdt6 -> schoolbookid = $request->schoolbookid1;
+            $bookothdt6 -> duedate = $request->duedate;
+            $bookothdt6 -> returndate = $request->returndate;
+           // $bookothdt6 -> status = 'return';
+            $bookothdt6 -> save();
+                
+            return redirect()->back()->with('success','New Detail for this book is inserted successfully'); 
+            return view('assignbook', $data);
+        }
         
-        return redirect()->back()->with('success','New Detail for this book is inserted successfully'); 
 
 
         $data['data112'] = DB::select(DB::raw("SELECT * FROM issuebooks INNER JOIN bookotherdetails
         ON issuebooks.schoolbookid=bookotherdetails.id"));
 
 
-            return view('assignbook', $data);
+           
 	}
 
 
@@ -164,7 +177,7 @@ $data['data9'] = DB::select(DB::raw("SELECT * FROM issuebooks INNER JOIN newbook
            $data->save();
         
            return  redirect()->back()->with('success','Book is inserted successfully'); 
-           <button onclick="{{assignbook.view">Click me</button>
+           
         }
 
     

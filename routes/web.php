@@ -12,6 +12,9 @@ use App\Http\Controllers\BookotherdetailController;
 use App\Http\Controllers\ReturnController;
 use App\Http\Controllers\bookotherdetails;
 use App\Http\Controllers\LibraryController;
+use App\Http\Controllers\viewbookshelfwise;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -97,6 +100,24 @@ Route::POST('assignbook/1', [BookotherdetailController::class, 'IssueBookStore']
 Route::POST('assignbook/11', [BookotherdetailController::class, 'IssueBookStore1'])->name('assignbook1.store');
 
 Route::get('assignbook/edit/{id}', [BookotherdetailController::class, 'ReturnBookEdit'])->name('assignbook.edit');
+
+
+
+
+Route::get('category/edit/{id}', [CategoryController::class, 'editCategory'])->name('category.edit');
+
+Route::POST('category/update', [CategoryController::class, 'updateCategory'])->name('category.update');
+
+Route::get('shelf/edit/{id}', [viewbookshelfwise::class, 'editShelf'])->name('shelf.edit');
+
+Route::POST('shelf/update', [viewbookshelfwise::class, 'updateShelf'])->name('shelf.update');
+
+
+Route::get('allbook/edit/{id}', [viewbookshelfwise::class, 'editAllbook'])->name('allbook.edit');
+
+
+
+
 
 Route::post('assignbook/update/{id}', [BookotherdetailController::class, 'ReturnBookUpdate'])->name('assignbook.update');
 

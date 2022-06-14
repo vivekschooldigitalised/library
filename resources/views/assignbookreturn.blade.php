@@ -29,13 +29,7 @@
          </div><!-- /.container-fluid -->
      </div>
      <!-- /.content-header -->
-
-
-
-   
-
-                                     
-     <!-- Main content -->
+    <!-- Main content -->
      <div class="content">
          <div class="container-fluid">
              <div class="row">
@@ -58,10 +52,7 @@
                                         
                                             </tr>
                                      </thead>                                   
-                                    
-                                  
-                                    
-                                       <td><center><button type="submit" class="btn btn-warning">Return</button>   </center></td>    
+                                 <td><center><button type="submit" class="btn btn-warning">Return</button>   </center></td>    
                                      <tbody>
                                          
                                      </tbody>

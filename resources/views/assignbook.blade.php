@@ -174,7 +174,7 @@
                                      <td>{{ $data5->schoolbookid }} </td>
                                      <td>{{ $data5->duedate }} </td>
                                                                 
-                                     <td><a href="{{ route('assignbook.edit',$data5->idd) }}" class="btn btn-info">Edit</a></td>
+                                     <td><a href="{{ route('assignbook.edit',$data5->idd) }}" class="btn btn-info">Return</a></td>
                                      
                                      <tbody>
                                          @endif

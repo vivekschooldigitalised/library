@@ -65,6 +65,7 @@ class NewbookController extends Controller
         $data['res'] = json_decode($response);
 
         $isbn = $request->isbn;
+        
             $data['isbn'] = newbook::where('isbn', $request->isbn)->get();
             return view('scanbook', $data);  
     }
@@ -82,45 +83,33 @@ class NewbookController extends Controller
 
     public function NewbookStore(Request $request)
 	{
-        // $subjectCount = count($request->assessment);
-	    // 	if ($subjectCount !=NULL)
-        //      {
-	    // 		for ($i=0; $i <$subjectCount ; $i++) { 
-			$newbooks = new newbook();
-            $newbooks->isbn = $request->isbn;
-            $newbooks->name = $request->titlelong;
-            $newbooks->publisher = $request->publisher;
-            $newbooks->language = $request->language;
-            $newbooks->authors = $request->authors;
-            $newbooks->edition = $request->edition;
-            $newbooks->pages = $request->pages;
-            $newbooks->prices = $request->prices;
-            $newbooks->image = $request->imagesrc;
       
-            $newbooks->save();
-       
-        // $newbookss = new bookotherdetail();
-        //     $newbookss->category = $request->category;
-        //     $newbookss->shelf = $request->newshelf;
-        //     // $newbooks->totalbooks = $request->numofbooks;
-            
-        //     $newbookss->bookseries = $request->book_series;
-        //     $newbookss->volume = $request->volume;
-        //     $newbookss->purchasedate = $request->purchasedate;
-        //     $newbookss->billnumber = $request->billnumber;
-        //     $newbookss->currency = $request->currency;
-        //     $newbookss->currentprice = $request->currentprice;
-           	// $newbooks->name = $request->newbook;
-            // $newbooks->isbn = $request->newbooks;
-            // $newbooks->category = $request->category;
-            // $newbooks->publisher = $request->publisher;
-            // $newbooks->author = $request->author;
-            // $newbooks->asignbookwithshelf = $request->newshelf;
-			// $newbookss->save();
-                
-       
+        $check = newbook::where([
+        ['isbn', '=', $request->isbn],
+        ])->first();
 
-            return redirect()->back()->with('success','New Book is inserted successfully');
+        if($check)
+            {
+                return "Already Exists";
+        }
+else
+{
+    $newbooks = new newbook();
+    $newbooks->isbn = $request->isbn;
+    $newbooks->name = $request->titlelong;
+    $newbooks->publisher = $request->publisher;
+    $newbooks->language = $request->language;
+    $newbooks->authors = $request->authors;
+    $newbooks->edition = $request->edition;
+    $newbooks->pages = $request->pages;
+    $newbooks->prices = $request->prices;
+    $newbooks->image = $request->imagesrc;
+
+    $newbooks->save();
+    return redirect()->back()->with('success','New Book is inserted successfully');
+
+}
+        
                 
     }
 
