@@ -48,14 +48,16 @@
                   <thead>
                   <tr>
       
-                 <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">ISBN No</th>
-                    <th>Book Name</th>
-                    <th>Author Name</th>
-                    <th>Publisher</th>
-                    <th>Language</th>
-                    <th>Edition</th>
-                    <th>Num Of Pages</th>
-                    <th>Price</th>
+                 <th >ISBN No</th>
+                    <th>Category Name</th>
+                    <th>Shelf Name</th>
+                    <th>School Book ID</th>
+                    <th>Book Series</th>
+                    <th>Volume</th>
+                    <th>Purchase Date</th>
+                    <th>Bill Number</th>
+                    <th>Currency</th>
+                    <th>Current Price</th>
                    
                     <th>Action</th>
 
@@ -66,22 +68,24 @@
                   <form method="post" action="">
                 @csrf
 
-                @foreach($allData101 as $allData101)
+                @foreach($allData222 as $allData222)
                   <tr class="odd">
-               
-                    <td>{{ $allData101->isbn }}</td>
-                    <td>{{ $allData101->name }}</td>
-                    <td>{{ $allData101->authors }}</td>
-                    <td>{{ $allData101->publisher }}</td>
-                    <td>{{ $allData101->language }}</td>
-                    <td>{{ $allData101->edition }}</td>
-                    <td>{{ $allData101->pages }}</td>
-                    <td>{{ $allData101->prices }}</td>
+                  
+                    <td>{{ $allData222['isbn_no']['isbn'] }}</td>
+                    <td>{{ $allData222->category }}</td>
+                    <td>{{ $allData222->shelf }}</td>
+                    <td>{{ $allData222->schoolbookid }}</td>
+                    <td>{{ $allData222->bookseries }}</td>
+                    <td>{{ $allData222->volume }}</td>
+                    <td>{{ $allData222->purchasedate }}</td>
+                    <td>{{ $allData222->billnumber }}</td>
+                    <td>{{ $allData222->currency }}</td>
+                    <td>{{ $allData222->currentprice }}</td>
                   
                    
                   
 
-                  <td><a href="{{ route('allbook.edit',  $allData101->id) }}" class="btn btn-info">Edit</a></td>
+                  <td><a href="{{ route('editotherbookdetail.edit',  $allData222->id) }}" class="btn btn-info">Edit</a></td>
               
                   </tr>
           

@@ -17,17 +17,97 @@ class NewbookController extends Controller
 
     public function BookView()
 	{
-        $data['data7'] = DB::select(DB::raw("SELECT newbooks.*,bookotherdetails.* from newbooks
+        $data['data7'] = DB::select(DB::raw("SELECT newbooks.*,bookotherdetails.*, newbooks.id AS nbidd, bookotherdetails.id AS bodidd from newbooks
         JOIN bookotherdetails ON newbooks.id=bookotherdetails.isbn_id"));
-            return view('allbook', $data);  
-    }
+   
+   
+   
+   $data['allData101'] = newbook::all();
+   return view('allbook', $data);  
 
+
+   $data['allData102'] = bookotherdetail::all();
+   return view('allbook', $data);
+
+}
     public function BookView11()
 	{
         $data['data11'] = DB::select(DB::raw("SELECT newbooks.*,bookotherdetails.* from newbooks
         JOIN bookotherdetails ON newbooks.id=bookotherdetails.isbn_id"));
             return view('bookdetailreport', $data);  
     }
+
+    public function editAllbook($id)
+	{
+
+       
+            // $data['categories'] = category::orderBy('id','DESC')->get();
+   
+
+        $newbookss = newbook::find($id);
+
+        return view("edit-newbook",
+         [
+            "newbook" =>  $newbookss
+         ]);
+    }
+
+    public function updateNewbook(Request $requestttt)
+	{
+		$newbook_update = newbook::find($requestttt->id);
+		$newbook_update->isbn = $requestttt->isbn;
+        $newbook_update->name = $requestttt->name;
+        $newbook_update->authors = $requestttt->authors;
+        $newbook_update->publisher = $requestttt->publisher;
+        $newbook_update->language = $requestttt->language;
+        $newbook_update->edition = $requestttt->edition;
+        $newbook_update->pages = $requestttt->pages;
+        $newbook_update->prices = $requestttt->prices;
+
+		$newbook_update->save();
+		return redirect()->back()->with('message',"This is Success Message");
+	}
+
+
+
+
+    public function editotherbookdetail($id)
+	{
+
+        $data['categoriesw'] = category::all();
+    
+        $data['newshelfw'] = newshelf::all();
+
+        $data['get_Data'] = bookotherdetail::where('id', $id)->get();
+
+         return view('edit-otherbookdetail', $data);  
+    }
+
+    public function updateotherbookdetail(Request $requesttttt)
+	{
+		$newbook_update1 = bookotherdetail::find($requesttttt->id);
+		$newbook_update1->category = $requesttttt->category;
+        $newbook_update1->shelf = $requesttttt->shelf;
+        $newbook_update1->schoolbookid = $requesttttt->schoolbookid;
+        $newbook_update1->bookseries = $requesttttt->bookseries;
+        $newbook_update1->volume = $requesttttt->volume;
+        $newbook_update1->purchasedate = $requesttttt->purchasedate;
+        $newbook_update1->billnumber = $requesttttt->billnumber;
+        $newbook_update1->currency = $requesttttt->currency;
+        $newbook_update1->currentprice = $requesttttt->currentprice;
+        
+
+		$newbook_update1->save();
+		return redirect()->back()->with('message',"This is Success Message");
+	}
+
+
+
+
+
+
+
+    
 
     public function issuebookView()
 	{

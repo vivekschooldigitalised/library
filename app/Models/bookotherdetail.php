@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class bookotherdetail extends Model
 {
-    use HasFactory;
+    public function isbn_no()
+    {
+        return $this->belongsTo(newbook::class, 'isbn_id', 'id');
+    }
 }

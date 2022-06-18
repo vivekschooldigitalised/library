@@ -44,16 +44,27 @@ class BookotherdetailController extends Controller
 		$data['allStudent'] = user::where('admissionnumber', $request->admission)->get();
 		$data['allData'] = newbook::where('isbn', $request->isbn)->get();
 
+        if ($request->isbn == true) {
+            # code...
+            $data123 = newbook::where('isbn', $request->isbn)->first();
+            $data['get'] = bookotherdetail::where('isbn_id', $data123->id)->first();
+        }else{
+            $data123 = newbook::where('isbn', 9781444931853)->first();
+            $data['get'] = bookotherdetail::where('isbn_id', $data123->id)->first();
+        }
+
 $data['data1'] = DB::select(DB::raw("SELECT newbooks.*,bookotherdetails.* from newbooks
             JOIN bookotherdetails ON newbooks.id=bookotherdetails.isbn_id     
-            WHERE newbooks.isbn=$isbnGet"));
+            WHERE newbooks.isbn=$isbnGet AND bookotherdetails.status=1"));
 
         $data['allData2'] = bookotherdetail::where('isbn_id', $request->schoolbookid)->get();
+
+       
 
         // $data['allData1'] = issuebook::all();
         $data['data5'] = DB::select(DB::raw("SELECT *,issuebooks.id AS idd  FROM issuebooks INNER JOIN users
 ON issuebooks.admissionnumber=users.id INNER JOIN newbooks ON issuebooks.isbn=newbooks.id
-INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id ORDER BY issuebooks.id DESC LIMIT 12 "));
+INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id ORDER BY issuebooks.id DESC LIMIT 5 "));
 
 
 
@@ -62,11 +73,20 @@ INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id ORDER
 
    
        
-       
+        return view('assignbook', $data);
         
 		#dd($data);
-		return view('assignbook', $data);
+		
 	}
+
+    public function viewotherbookdetail()
+	{
+    $data['allData222'] = bookotherdetail::all();
+    
+
+    return view('viewbookotherdetail', $data);
+    }
+
 
 
     public function AssignbookView11(Request $reqst)
@@ -85,7 +105,7 @@ INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id ORDER
         $id_get = newbook::where('isbn', $reqq->isbn)->first();
         $bookothdtl = new bookotherdetail();
         $bookothdtl -> isbn_id = $id_get->id;
-        // $bookothdtl -> title = $reqq->title;
+  
         $bookothdtl  -> category = $reqq->category;
         $bookothdtl  -> shelf = $reqq->shelf;
         $bookothdtl  -> schoolbookid = $reqq->schoolbookid;
@@ -95,6 +115,7 @@ INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id ORDER
         $bookothdtl -> billnumber = $reqq->billnumber;
         $bookothdtl -> currency = $reqq->currency;
         $bookothdtl -> currentprice = $reqq->currentprice;
+        $bookothdtl -> status = $reqq->status;
         $bookothdtl -> save();
         
         return redirect()->back()->with('success','New Detail for this book is inserted successfully'); 
@@ -111,18 +132,9 @@ INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id ORDER
         return redirect()->back()->with('success','New Detail for this book is inserted successfully'); 
     }
 
-    public function IssueBookStore1(Request $request)
+    public function IssueBookStore1(Request $request, $id)
     {
-        $check1 = issuebook::where([
-            ['returndate' == NULL],
-        ])->first();
-
-        if($check1)
-        {
-            return "This book is already issued";
-        }
-        else
-        {
+       
             $bookothdt6 = new issuebook();
             $bookothdt6 -> admissionnumber = $request->admissionnumber1;
             $bookothdt6 -> isbn = $request->isbn1;
@@ -132,6 +144,10 @@ INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id ORDER
             $bookothdt6 -> returndate = $request->returndate;
            // $bookothdt6 -> status = 'return';
             $bookothdt6 -> save();
+
+            $bookothdt23 = bookotherdetail::find($id);
+            $bookothdt23 -> status = '0';           
+            $bookothdt23 -> save();
                 
             return redirect()->back()->with('success','New Detail for this book is inserted successfully'); 
             return view('assignbook', $data);
@@ -139,12 +155,6 @@ INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id ORDER
         
 
 
-        $data['data112'] = DB::select(DB::raw("SELECT * FROM issuebooks INNER JOIN bookotherdetails
-        ON issuebooks.schoolbookid=bookotherdetails.id"));
-
-
-           
-	}
 
 
 
@@ -171,10 +181,16 @@ $data['data9'] = DB::select(DB::raw("SELECT * FROM issuebooks INNER JOIN newbook
 
         public function ReturnBookUpdate(Request $request,$id){
 
+            $get = issuebook::where('id', $id)->first();
+
             $date = date("d-m-Y");
            $data = issuebook::find($id);
            $data->returndate = $date;
            $data->save();
+
+           $bookothdt231 = bookotherdetail::find($get->schoolbookid);
+           $bookothdt231 -> status = '1';           
+           $bookothdt231 -> save();
         
            return  redirect()->back()->with('success','Book is inserted successfully'); 
            

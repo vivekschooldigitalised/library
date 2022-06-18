@@ -3,7 +3,9 @@
  @section('content')
 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js" integrity="sha512-F636MAkMAhtTplahL9F6KmTfxTmYcAcjcCkyu0f0voT3N/6vzAuJ4Num55a0gEJ+hRLHhdz3vDvZpf6kqgEa5w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ 
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/css/bootstrap-toggle.css" integrity="sha512-9tISBnhZjiw7MV4a1gbemtB9tmPcoJ7ahj8QWIc0daBCdvlKjEA48oLlo6zALYm3037tPYYulT0YQyJIJJoyMQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
 
  <div class="content-wrapper">
      <!-- Content Header (Page header) -->
@@ -86,7 +88,7 @@
 
                              <br><br><br>
 
-                             <form method="POST" action="{{route('assignbook1.store')}}">
+                             <form method="POST" action="{{route('assignbook1.store',$get->id)}}">
                                  @csrf
                              <table class="table">
                                  <thead>
@@ -98,6 +100,7 @@
                                          <th scope="col">Title Name</th>
                                          <th scope="col">School Book Id</th>
                                          <th scope="col">Due Date</th>
+                                         <th scope="col"><input type="hidden"Status {{ $get->id }}></th>
                                         
 
                                          
@@ -110,11 +113,12 @@
                                  @foreach($data1 as $value1)
                                  <td>{{ $value1->isbn }}</td>
                                  <td>{{ $value1->name }}</td>
-                                 <td>{{ $value1->schoolbookid }} </td>
-                            
-                                   
-                             
-                                     <td><input type="date" name="duedate" required> </td>
+                                 <td>{{ $value1->schoolbookid }} </td>                   
+                                 <td><input type="date" name="duedate" required> </td>
+
+
+                              
+
                                      
                                      @foreach($allStudent as $value)
                                      <td><input type="hidden" name="admissionnumber1" value=" {{$value->id }} "></td>
@@ -125,11 +129,7 @@
                                      <td><input type="hidden" name="name1" value="{{ $value1->name }}"></td> 
                                      <td><input type="hidden" name="schoolbookid1" value="{{ $value1->id }}"></td>                                                   
                                      @endforeach
-
-
-                                    
-                                     
-                                   
+      
                                      <td><button type="submit" class="btn btn-warning">Issue</button></td>                             
                                      
                                      <tbody>
@@ -159,6 +159,7 @@
                                          <th scope="col">Title Name</th>
                                          <th scope="col">School Book Id</th>
                                          <th scope="col">Due Date</th>
+                                         <th scope="col">Return Status</th>
                                          <th scope="col">Action</th> 
 
                                          
@@ -173,6 +174,7 @@
                                      <td>{{ $data5->name }} </td>
                                      <td>{{ $data5->schoolbookid }} </td>
                                      <td>{{ $data5->duedate }} </td>
+                                     <td>{{ $data5->returndate }} </td>
                                                                 
                                      <td><a href="{{ route('assignbook.edit',$data5->idd) }}" class="btn btn-info">Return</a></td>
                                      

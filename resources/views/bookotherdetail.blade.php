@@ -67,8 +67,9 @@
                                  </center>
                                  <div class="input-group input-group-sm mb-3">
 
-                                     <!-- <input type="hidden" class="form-control" name="title" value="{{ $value->name }}"> -->
+                                       
                                      <input type="hidden" class="form-control" name="isbn" value="{{ $value->isbn }}">
+                                   
                                      <span class="input-group-append">
                                  </div>
                                  <label class="control-label ">Category</label>
@@ -102,6 +103,12 @@
                                  <div class="input-group input-group-sm mb-3">
                                      <input type="text" class="form-control" name="bookseries">
                                      <span class="input-group-append">
+                                 </div>
+
+                             
+                                 <div class="input-group input-group-sm mb-3">
+                                 <input type="hidden" class="form-control" name="status" value="1">
+                                 <span class="input-group-append">
                                  </div>
 
                                  <label class="control-label ">Volume </label>

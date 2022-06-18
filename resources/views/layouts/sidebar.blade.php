@@ -166,9 +166,17 @@
               <li class="nav-item">
                 <a href="{{ route('book.view') }}" class="nav-link ">
                   <i class="icon-material-outline-business-center"></i>
-                  <p>Book Search</p>
+                  <p>View/Update New Book Details</p>
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a href="{{ route('bookotherdetails.view') }}" class="nav-link ">
+                  <i class="icon-material-outline-business-center"></i>
+                  <p>View/Update Other Book Details</p>
+                </a>
+              </li>
+
             </ul>
           </li>
           
