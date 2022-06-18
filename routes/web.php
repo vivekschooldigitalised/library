@@ -74,6 +74,8 @@ Route::POST('newbook/2', [NewbookController::class, 'ScannedbookStore'])->name('
 
 Route::get('book/view', [NewbookController::class, 'BookView'])->name('book.view');
 
+Route::get('bookotherdetail/view1', [BookotherdetailController::class, 'viewotherbookdetail'])->name('bookotherdetails.view');
+
 Route::get('book11/view', [NewbookController::class, 'BookView11'])->name('book11.view');
 
 
@@ -97,7 +99,7 @@ Route::get('assignbook11/view', [BookotherdetailController::class, 'AssignbookVi
 
 Route::POST('assignbook/1', [BookotherdetailController::class, 'IssueBookStore'])->name('assignbook.store');
 
-Route::POST('assignbook/11', [BookotherdetailController::class, 'IssueBookStore1'])->name('assignbook1.store');
+Route::POST('assignbook/11{id}', [BookotherdetailController::class, 'IssueBookStore1'])->name('assignbook1.store');
 
 Route::get('assignbook/edit/{id}', [BookotherdetailController::class, 'ReturnBookEdit'])->name('assignbook.edit');
 
@@ -110,10 +112,23 @@ Route::POST('category/update', [CategoryController::class, 'updateCategory'])->n
 
 Route::get('shelf/edit/{id}', [viewbookshelfwise::class, 'editShelf'])->name('shelf.edit');
 
+
 Route::POST('shelf/update', [viewbookshelfwise::class, 'updateShelf'])->name('shelf.update');
 
 
-Route::get('allbook/edit/{id}', [viewbookshelfwise::class, 'editAllbook'])->name('allbook.edit');
+Route::get('newbook/edit/{id}', [NewbookController::class, 'editAllbook'])->name('allbook.edit');
+
+
+Route::POST('newbook/update', [NewbookController::class, 'updateNewbook'])->name('newbook.update');
+
+
+
+Route::get('otherbookdetail/edit/{id}', [NewbookController::class, 'editotherbookdetail'])->name('editotherbookdetail.edit');
+
+
+Route::POST('otherbookdetail/update', [NewbookController::class, 'updateotherbookdetail'])->name('editotherbookdetail.update');
+
+
 
 
 
