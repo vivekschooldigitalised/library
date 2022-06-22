@@ -75,8 +75,8 @@
                                  <label class="control-label ">Category</label>
                                  <div class="input-group input-group-sm mb-3">
                                      <select name="category" >
-                                         @foreach($categories as $cat)
-                                         <option value="{{ $cat->name }}">{{ $cat->name }}</option>
+                                         @foreach($categories as $categories)
+                                         <option value="{{ $categories->name }}">{{ $categories->name }}</option>
 
                                          @endforeach
                                      </select>
@@ -141,13 +141,44 @@
                                      <span class="input-group-append">
                                  </div>
 
+
+
+                                 <label class="control-label ">Book Permission</label>
+                                 <div class="input-group input-group-sm mb-3">
+                                     <select name="issuepermission" class="form-control">
+                                        
+                                         <option value="YES">YES</option>
+                                         <option value="NO">NO</option>
+                                         
+                                         
+                                     </select>
+                                     <span class="input-group-append">
+                                        </div>
+
+
+                                 <label class="control-label ">Book Remarks</label>
+                                 <div class="input-group input-group-sm mb-3">
+                                     <select name="bookremarks" class="form-control">
+                                         @foreach($newbookremarks as $newbookremarks)
+                                         <option value="{{ $newbookremarks->name }}">{{ $newbookremarks->name }}</option>
+
+                                         @endforeach
+                                     </select>
+                                     <span class="input-group-append"> 
+                                 </div>
+
+                       
+
+
+
                                  <input type="submit" class="btn btn-rounded btn-info mb-5 mt-2" value="Send">
 
 
-
                                  @endforeach
+                      
 
                              </form>
+                             </div>
                              <!-- /input-group -->
                          </div>
                          <!-- /.card-body -->

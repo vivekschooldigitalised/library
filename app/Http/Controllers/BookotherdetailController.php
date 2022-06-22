@@ -9,6 +9,7 @@ use App\Models\user;
 use App\Models\issuebook;
 use App\Models\category;
 use App\Models\newshelf;
+use App\Models\createremarks;
 
 use DB;
 #use Illuminate\Support\Facades\DB;
@@ -22,6 +23,8 @@ class BookotherdetailController extends Controller
         $data['categories'] = category::all();
 
     $data['newshelf'] = newshelf::orderBy('id','ASC')->get();
+    $data['newbookremarks'] = createremarks::orderBy('id','ASC')->get();
+
         $data['isbnno2'] = $request->isbn;
 		$data['allData'] = newbook::where('isbn', $request->isbn)->get();
 		
@@ -45,26 +48,32 @@ class BookotherdetailController extends Controller
 		$data['allData'] = newbook::where('isbn', $request->isbn)->get();
 
         if ($request->isbn == true) {
-            # code...
+           
             $data123 = newbook::where('isbn', $request->isbn)->first();
             $data['get'] = bookotherdetail::where('isbn_id', $data123->id)->first();
         }else{
             $data123 = newbook::where('isbn', 9781444931853)->first();
             $data['get'] = bookotherdetail::where('isbn_id', $data123->id)->first();
+
         }
 
-$data['data1'] = DB::select(DB::raw("SELECT newbooks.*,bookotherdetails.* from newbooks
-            JOIN bookotherdetails ON newbooks.id=bookotherdetails.isbn_id     
-            WHERE newbooks.isbn=$isbnGet AND bookotherdetails.status=1"));
+$data['data1'] = DB::select(DB::raw("SELECT newbooks.*,bookotherdetails.*, bookotherdetails.id AS id_no from newbooks
+            LEFT JOIN bookotherdetails ON newbooks.id=bookotherdetails.isbn_id     
+            WHERE newbooks.isbn=$isbnGet AND bookotherdetails.status=1 AND bookotherdetails.issuepermission='YES'"));
 
         $data['allData2'] = bookotherdetail::where('isbn_id', $request->schoolbookid)->get();
 
        
 
         // $data['allData1'] = issuebook::all();
-        $data['data5'] = DB::select(DB::raw("SELECT *,issuebooks.id AS idd  FROM issuebooks INNER JOIN users
-ON issuebooks.admissionnumber=users.id INNER JOIN newbooks ON issuebooks.isbn=newbooks.id
-INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id ORDER BY issuebooks.id DESC LIMIT 5 "));
+        $data['data5'] = DB::select(DB::raw("SELECT *, issuebooks.id AS idd  FROM issuebooks 
+        INNER JOIN users
+ON issuebooks.admissionnumber=users.id 
+
+INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id
+LEFT JOIN newbooks ON newbooks.id=issuebooks.isbn 
+WHERE newbooks.isbn=$isbnGet AND bookotherdetails.status=0 AND returndate IS NULL
+ORDER BY issuebooks.id   "));
 
 
 
@@ -103,9 +112,22 @@ INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id ORDER
     public function BookotherdetailStore(Request $reqq)
     {
         $id_get = newbook::where('isbn', $reqq->isbn)->first();
-        $bookothdtl = new bookotherdetail();
+
+        
+      
+            $check = bookotherdetail::where([
+            ['schoolbookid', '=', $reqq->schoolbookid],
+            ])->first();
+    
+            if($check)
+                {
+                    return "Already Exists";
+            }
+    else
+    {
+        $bookothdtl = new bookotherdetail() ;
         $bookothdtl -> isbn_id = $id_get->id;
-  
+       
         $bookothdtl  -> category = $reqq->category;
         $bookothdtl  -> shelf = $reqq->shelf;
         $bookothdtl  -> schoolbookid = $reqq->schoolbookid;
@@ -116,10 +138,15 @@ INNER JOIN bookotherdetails ON issuebooks.schoolbookid=bookotherdetails.id ORDER
         $bookothdtl -> currency = $reqq->currency;
         $bookothdtl -> currentprice = $reqq->currentprice;
         $bookothdtl -> status = $reqq->status;
+        $bookothdtl -> issuepermission = $reqq->issuepermission;
+        $bookothdtl -> bookremarks = $reqq->bookremarks;
+      
+       
         $bookothdtl -> save();
         
         return redirect()->back()->with('success','New Detail for this book is inserted successfully'); 
     }
+}
 
     public function IssueBookStore(Request $reqqq)
     {
@@ -196,6 +223,7 @@ $data['data9'] = DB::select(DB::raw("SELECT * FROM issuebooks INNER JOIN newbook
            
         }
 
+       
     
 
 

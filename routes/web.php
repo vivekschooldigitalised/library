@@ -13,6 +13,10 @@ use App\Http\Controllers\ReturnController;
 use App\Http\Controllers\bookotherdetails;
 use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\viewbookshelfwise;
+use App\Http\Controllers\CreateremarksController;
+
+
+
 
 
 /*
@@ -60,6 +64,18 @@ Route::POST('author/add', [AuthorController::class, 'AuthorStore'])->name('autho
 Route::POST('publisher/add', [PublisherController::class, 'PublisherStore'])->name('publisher.store');
 Route::POST('Category/add', [CategoryController::class, 'CategoryStore'])->name('category.store');
 
+Route::get('createremarks/view', [CreateremarksController::class, 'createremarksView'])->name('createremarks.view');
+
+Route::POST('createremarks/store', [CreateremarksController::class, 'createremarksStore'])->name('createremarks.store');
+
+Route::get('createremarksViewupdate/View', [CreateremarksController::class, 'createremarksViewupdate'])->name('createremarksViewupdate.view');
+
+Route::get('created_remarks/edit/{id}', [CreateremarksController::class, 'editbookremarks'])->name('createremarks.edit');
+
+Route::POST('created_remarks/update', [CreateremarksController::class, 'updateCreateRemarks'])->name('createremarks.update');
+
+
+
 Route::POST('newshelf/add', [NewshelfController::class, 'ShelfStore'])->name('newshelf.store');
 
 Route::get('assignshelfbook/view', [AssignshelfbookController::class, 'AssignshelfbookView'])->name('self.view');
@@ -86,6 +102,7 @@ Route::get('return/book/view', [ReturnController::class, 'ReturnBookView'])->nam
 
 
 Route::get('Category/View', [CategoryController::class, 'CategoryView'])->name('category.view');
+
 
 Route::get('shelf/View', [NewshelfController::class, 'ShelfView'])->name('shelf.view');
 

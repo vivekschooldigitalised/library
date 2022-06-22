@@ -9,6 +9,7 @@ use App\Models\Author;
 use App\Models\publisher;
 use App\Models\newshelf;
 use App\Models\bookotherdetail;
+use App\Models\createremarks;
 use DB;
 
 
@@ -78,13 +79,28 @@ class NewbookController extends Controller
     
         $data['newshelfw'] = newshelf::all();
 
+        $data['newshelfw'] = newshelf::all();
+
         $data['get_Data'] = bookotherdetail::where('id', $id)->get();
+
+        $data['newbookremarks1'] = createremarks::orderBy('id','ASC')->get();
 
          return view('edit-otherbookdetail', $data);  
     }
 
     public function updateotherbookdetail(Request $requesttttt)
 	{
+        $check = bookotherdetail::where([
+            ['schoolbookid', '=', $requesttttt->schoolbookid],
+            ])->first();
+    
+            if($check)
+                {
+                    return "School Book Id is - Already Exists";
+                    
+            }
+    else
+    {
 		$newbook_update1 = bookotherdetail::find($requesttttt->id);
 		$newbook_update1->category = $requesttttt->category;
         $newbook_update1->shelf = $requesttttt->shelf;
@@ -95,11 +111,14 @@ class NewbookController extends Controller
         $newbook_update1->billnumber = $requesttttt->billnumber;
         $newbook_update1->currency = $requesttttt->currency;
         $newbook_update1->currentprice = $requesttttt->currentprice;
+        $newbook_update1->issuepermission = $requesttttt->issuepermission;
+        $newbook_update1->bookremarks = $requesttttt->bookremarks;
         
 
 		$newbook_update1->save();
 		return redirect()->back()->with('message',"This is Success Message");
 	}
+}
 
 
 

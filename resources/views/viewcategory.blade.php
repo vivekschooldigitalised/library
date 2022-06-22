@@ -54,7 +54,7 @@
             <div class="col-sm-12"><table id="example1" class="table table-bordered table-striped dataTable dtr-inline" aria-describedby="example1_info"> 
                   <thead>
                   <tr>
-                  <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Book Id</th>
+                  <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Sr. Num</th>
                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Book Name</th>
                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Action</th>
             
@@ -66,11 +66,11 @@
                   <form method="post" action="">
                 @csrf
 
-                
-                @foreach($categories as $categories)
+             
+                @foreach($categories as $key => $categories)
 
 <tr class="odd">
-
+<td>{{ $key+1 }}</td>
 <td>{{ $categories->id }}</td>    
 <td>{{ $categories->name }}</td>
     <!-- <td><button type="button" class="btn btn-block btn-success">Edit </button></td> -->

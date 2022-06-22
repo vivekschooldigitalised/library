@@ -81,6 +81,10 @@
               </li>
             </ul>
           </li> -->
+          <p>
+           
+              <center>  <button type="button" class="btn btn-success">Setup</button></center>
+              </p>
             <li class="nav-item menu-close">
             <a href="#" class="nav-link active">
               <i class="icon-material-outline-business-center"></i>
@@ -133,6 +137,40 @@
               </li>
             </ul>
           </li>
+
+
+          <li class="nav-item menu-close">
+            <a href="#" class="nav-link active">
+              <i class="icon-material-outline-business-center"></i>
+              <p>
+                Create Book Remarks
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('createremarks.view') }}" class="nav-link ">
+                  <i class="icon-material-outline-business-center"></i>
+                  <p>Create Remarks</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('createremarksViewupdate.view') }}" class="nav-link ">
+                  <i class="icon-material-outline-business-center"></i>
+                  <p>View/Update Remarks</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          <p>
+            <br>
+            <br>
+                
+                <center><button type="button" class="btn btn-success">Activity</button></center>
+              </p>
+
+
           <li class="nav-item menu-close">
             <a href="#" class="nav-link active">
               <i class="icon-material-outline-business-center"></i>
@@ -244,7 +282,8 @@
               </li> -->
             </ul>
           </li>
-          
+          <br>
+          <br>
           <li class="nav-item menu-close">
             <a href="#" class="nav-link active">
               <i class="icon-material-outline-business-center"></i>

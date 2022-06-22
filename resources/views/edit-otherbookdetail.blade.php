@@ -107,6 +107,33 @@
                                      <input type="text" value="{{$get_Data->currentprice}}" class="form-control" name="currentprice">
                                      <span class="input-group-append">
                                  </div>
+
+
+                                 <label class="control-label ">Book Issue Permission </label>
+                                 <div class="input-group input-group-sm mb-3">
+                                     <select class="form-control" name="issuepermission" > 
+                                         <option value="YES">YES</option>
+                                         <option value="NO">NO</option>
+                                     </select>
+                                 </div>
+
+
+                           
+                                 <label class="control-label ">Remarks For The Book </label>
+                                 <div class="input-group input-group-sm mb-3">
+                                  <select class="form-control" name="bookremarks" >
+                                         @foreach($newbookremarks1 as $newbookremarks2)
+                                         <option value="{{ $newbookremarks2->name }}">{{ $newbookremarks2->name }}</option>
+
+                                         @endforeach
+                                     </select>
+                                     </div>
+
+                               
+
+                                 
+
+
                                      
 
     
