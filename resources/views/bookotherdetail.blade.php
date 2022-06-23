@@ -35,6 +35,16 @@
                      <!-- Input addon -->
                      <div class="card card-info">
                          <div class="card-header">
+
+
+
+                         @if(session()->has('message'))
+                <div class="alert alert-success">
+                {{ session()->get('message') }}
+                </div>
+                @endif
+
+
                              <h3 class="card-title">Add Other Details of Book</h3>
                          </div>
 

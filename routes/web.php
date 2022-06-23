@@ -146,7 +146,7 @@ Route::get('otherbookdetail/edit/{id}', [NewbookController::class, 'editotherboo
 Route::POST('otherbookdetail/update', [NewbookController::class, 'updateotherbookdetail'])->name('editotherbookdetail.update');
 
 
-
+Route::get('xyz/view', [NewbookController::class, 'xyz1'])->name('xyz.view');
 
 
 

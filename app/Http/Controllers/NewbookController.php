@@ -66,7 +66,7 @@ class NewbookController extends Controller
         $newbook_update->prices = $requestttt->prices;
 
 		$newbook_update->save();
-		return redirect()->back()->with('message',"This is Success Message");
+		return redirect()->back()->with('message',"New Book Is Insterted Successfully");
 	}
 
 
@@ -116,7 +116,9 @@ class NewbookController extends Controller
         
 
 		$newbook_update1->save();
-		return redirect()->back()->with('message',"This is Success Message");
+
+        return redirect()->back()->with('message','Updated Successfully');
+	
 	}
 }
 
@@ -205,7 +207,7 @@ else
     $newbooks->image = $request->imagesrc;
 
     $newbooks->save();
-    return redirect()->back()->with('success','New Book is inserted successfully');
+    return redirect()->back()->with('message','New Book Inserted Successfully');
 
 }
         

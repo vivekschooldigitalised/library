@@ -107,13 +107,7 @@ button:hover {
          </div><!-- /.container-fluid -->
      </div>
      <!-- /.content-header -->
-     @if (\Session::has('success'))
-     <div class="alert alert-success">
-         <ul>
-             <li>{!! \Session::get('success') !!}</li>
-         </ul>
-     </div>
-     @endif
+    
      <!-- Main content -->
      <div class="content">
          <div class="container-fluid">
@@ -126,6 +120,14 @@ button:hover {
                      <!-- Input addon -->
                      <div class="card card-info">
                          <div class="card-header">
+
+            
+                         @if(session()->has('message'))
+                <div class="alert alert-success">
+                {{ session()->get('message') }}
+                </div>
+                @endif
+
                              <h3 class="card-title">Add New Book Detail</h3>
                          </div>
                          <div class="card-body">

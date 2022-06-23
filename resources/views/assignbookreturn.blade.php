@@ -15,6 +15,14 @@
          <div class="container-fluid">
              <div class="row mb-2">
                  <div class="col-sm-6">
+
+                 @if(session()->has('message'))
+                <div class="alert alert-success">
+                {{ session()->get('message') }}
+                </div>
+                @endif
+
+
                      <center>
                          <h1 class="m-0">Trinity Global School</h1>
                      </center>
@@ -42,6 +50,7 @@
                      <div class="card card-info">
                          <div class="card-header">
                              <h3 class="card-title">Book Return</h3>
+                             <a href="{{ route('assignbook.view') }}" class="btn btn-secondary" style="float: right;">Back</a>  </td> </center>
                          </div>
                          
                              <form method="POST" action="{{ route('assignbook.update',@$edi) }}">
@@ -52,7 +61,8 @@
                                         
                                             </tr>
                                      </thead>                                   
-                                 <td><center><button type="submit" class="btn btn-warning">Return</button>   </center></td>    
+                                 <td><center><button type="submit" class="btn btn-warning">Return</button> </td>
+                                 
                                      <tbody>
                                          
                                      </tbody>

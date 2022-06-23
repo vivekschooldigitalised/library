@@ -20,10 +20,10 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-    @if (\Session::has('success'))
+    @if (Session::has('success'))
     <div class="alert alert-success">
         <ul>
-            <li>{!! \Session::get('success') !!}</li>
+            <li>{{Session::get('success') }}</li>
         </ul>
     </div>
 @endif

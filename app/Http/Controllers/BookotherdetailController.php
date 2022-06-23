@@ -144,7 +144,7 @@ ORDER BY issuebooks.id   "));
        
         $bookothdtl -> save();
         
-        return redirect()->back()->with('success','New Detail for this book is inserted successfully'); 
+        return redirect()->back()->with('message','New Detail for this book is inserted successfully'); 
     }
 }
 
@@ -156,7 +156,7 @@ ORDER BY issuebooks.id   "));
         $bookothdt2 -> isbn = $reqqq->isbn;
         $bookothdt2 -> duedate = $reqqq->duedate;
         $bookothdt2 -> save();
-        return redirect()->back()->with('success','New Detail for this book is inserted successfully'); 
+        return redirect()->back()->with('message','New Detail for this book is inserted successfully'); 
     }
 
     public function IssueBookStore1(Request $request, $id)
@@ -176,7 +176,7 @@ ORDER BY issuebooks.id   "));
             $bookothdt23 -> status = '0';           
             $bookothdt23 -> save();
                 
-            return redirect()->back()->with('success','New Detail for this book is inserted successfully'); 
+            return redirect()->back()->with('message','Book Issued Successfully');  
             return view('assignbook', $data);
         }
         
@@ -193,7 +193,9 @@ ORDER BY issuebooks.id   "));
       
         $bookothdt6 -> save();
         
-        return redirect()->back()->with('success','New Detail for this book is inserted successfully'); 
+       
+  
+
     }
 
 
@@ -219,7 +221,9 @@ $data['data9'] = DB::select(DB::raw("SELECT * FROM issuebooks INNER JOIN newbook
            $bookothdt231 -> status = '1';           
            $bookothdt231 -> save();
         
-           return  redirect()->back()->with('success','Book is inserted successfully'); 
+         
+
+           return redirect()->back()->with('message','Return Successfully'); 
            
         }
 

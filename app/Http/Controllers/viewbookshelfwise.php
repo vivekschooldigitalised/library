@@ -33,7 +33,7 @@ class viewbookshelfwise extends Controller
 		$shelf_update->name = $requesttt->name;
 
 		$shelf_update->save();
-		return redirect()->back()->with('message',"This is Success Message");
+		return redirect()->back()->with('message',"Shelf Updated Successfully");
 	}
 
 

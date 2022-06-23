@@ -20,7 +20,13 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
+    @if (\Session::has('message'))
+    <div class="alert alert-success">
+        <ul>
+            <li>{{ session()->get('message') }}</li>
+        </ul>
+    </div>
+@endif
 
     <section class="content">
       <div class="container-fluid">
@@ -29,6 +35,12 @@
             
             <div class="card">
               <div class="card-header">
+
+
+
+              
+
+
                 <h3 class="card-title">Edit Other Book Details</h3>
               </div>
               <!-- /.card-header -->

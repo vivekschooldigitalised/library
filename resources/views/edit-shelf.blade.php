@@ -28,6 +28,16 @@
 
                     <div class="card">
                         <div class="card-header">
+
+
+                        
+              @if(session()->has('message'))
+                <div class="alert alert-success">
+                {{ session()->get('message') }}
+                </div>
+                @endif
+
+                
                             <h3 class="card-title">Edit Shelf Details</h3>
                         </div>
                         <!-- /.card-header -->

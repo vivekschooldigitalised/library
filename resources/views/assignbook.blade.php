@@ -44,19 +44,23 @@
                      <!-- Input addon -->
                      <div class="card card-info">
                          <div class="card-header">
+
+
+
+             
+
+
                              <h3 class="card-title">Issue The Book</h3>
                          </div>
 
                          <div class="card-body">
                              <form method="get" action="{{route('assignbook.view')}}">
                                  <center>
-                                     <label for="cars">Issue To User</label>
-
-                                     <select name="users" id="user">
-                                         <option value="volvo">Teacher/Admin</option>
-                                         <option value="saab">Student</option>
-                                 </center>
-                                 </select>
+                                 @if(session()->has('message'))
+                <div class="alert alert-success">
+                {{ session()->get('message') }}
+                </div>
+                @endif
                                  <div class="row">
                                      <div class="col-md-6">
                                          <label class="control-label ">Enter The Admission Number</label>
@@ -86,6 +90,7 @@
                          </div>
 
                          <center>
+               
 
 
 
@@ -97,6 +102,7 @@
                                  <thead>
                                          <tr>
                                              <!-- <th scope="col">Student Admission Number</th> -->
+                                             <th scope="col">Sr. Num.</th>
                                              <th scope="col">User ID</th>
                                              <th scope="col">ISBN Number</th>
                                              <th scope="col">Title Name</th>
@@ -106,10 +112,11 @@
                                             </tr>
                                         </thead>
                                         
-                                        @foreach($data1 as $value1)
+                                        @foreach($data1 as $key=> $value1)
                                         <tbody>
                                          <form method="POST" action="{{route('assignbook1.store',$value1->id_no)}}">
                                           @csrf
+                                          <td>{{ $key+1 }}</td>
                                              @foreach($allStudent as $value)
                                              <td>{{ $value->admissionnumber }}</td>
                                              <input type="hidden" name="admissionnumber1" value=" {{$value->id }} ">
@@ -139,7 +146,7 @@
                                      <thead>
                                          <tr>
                                              <!-- <th scope="col">Student Admission Number</th> -->
-
+                                             <th scope="col">Sr. Num.</th>
                                              <th scope="col">User</th>
                                              <th scope="col">ISBN Number</th>
                                              <th scope="col">Title Name</th>
@@ -153,8 +160,9 @@
                                          </tr>
                                      </thead>
 
-                                     @foreach($data5 as $data5)
+                                     @foreach($data5 as $key=> $data5)
                                      @if($data5->isbn == true)
+                                     <td>{{ $key+1 }}</td>
                                      <td>{{ $data5->admissionnumber }}</td>
                                      <td>{{ $data5->isbn }}</td>
                                      <td>{{ $data5->name }} </td>
