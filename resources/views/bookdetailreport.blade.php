@@ -43,7 +43,7 @@
                          
                          <div class="card-body">
 
-                         <button id="btnExport" onClick="fnExcelReport()">Export to Excel</button>
+                         <button id="btnExport" class="btn btn-info" onClick="fnExcelReport()">Export to Excel</button><br> <br>
 
                              <form method="get" action="{{ route('book11.view') }}">
                                  @csrf
