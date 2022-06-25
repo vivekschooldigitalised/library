@@ -50,7 +50,7 @@
                                  <table id="example9" class="table table-bordered table-striped dataTable dtr-inline" aria-describedby="example1_info">
                                      <thead>
                                          <tr>
-                                         <th >Sr. No</th>
+                                         <th >Sr.No</th>
                                              <th class="sorting sorting_asc" tabindex="0" aria-controls="example1"
                                                  rowspan="1" colspan="1" aria-sort="ascending"
                                                  aria-label="Rendering engine: activate to sort column descending">ISBN
@@ -60,7 +60,7 @@
                                                  Book Name</th>
                                              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                  colspan="1"
-                                                 aria-label="Platform(s): activate to sort column ascending">Author Name
+                                                 aria-label="Platform(s): activate to sort column ascending">Author
                                              </th>
                                              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                  colspan="1"
@@ -74,7 +74,7 @@
                                                  Edition</th>
                                              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                  colspan="1" aria-label="CSS grade: activate to sort column ascending">
-                                                 Num Of Pages</th>
+                                                Pages</th>
                                              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                  colspan="1" aria-label="CSS grade: activate to sort column ascending">
                                                  Price</th>
@@ -84,15 +84,13 @@
                                              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                  colspan="1" aria-label="CSS grade: activate to sort column ascending">
                                                  Shelf</th>
-                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                                 colspan="1" aria-label="CSS grade: activate to sort column ascending">
-                                                 Status</th>
+                                          
                                                  <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                  colspan="1" aria-label="CSS grade: activate to sort column ascending">
                                                  Book Remarks</th>
                                                  <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                  colspan="1" aria-label="CSS grade: activate to sort column ascending">
-                                                 Issue Permission</th>
+                                                 Status</th>
 
                                          </tr>
                                      </thead>
@@ -112,7 +110,7 @@
                                          <td>{{ $data11->prices }}</td>
                                          <td>{{ $data11->category }}</td>
                                          <td>{{ $data11->shelf }}</td>
-                                         <td>{{ $data11->shelf }}</td>
+                                         
                                          <td>{{ $data11->bookremarks }}</td>
                                          <td>{{ $data11->issuepermission }}</td>
 
