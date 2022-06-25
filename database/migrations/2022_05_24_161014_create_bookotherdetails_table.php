@@ -15,12 +15,19 @@ class CreateBookotherdetailsTable extends Migration
     {
         Schema::create('bookotherdetails', function (Blueprint $table) {
             $table->id();
+            $table->string('isbn_id')->nullable();
+            $table->string('category')->nullable();
+            $table->string('shelf')->nullable();
+            $table->string('schoolbookid')->nullable();
             $table->string('bookseries')->nullable();
             $table->string('volume')->nullable();
             $table->string('purchasedate')->nullable();
             $table->string('billnumber')->nullable();
             $table->string('currency')->nullable();
             $table->string('currentprice')->nullable();
+            $table->string('status')->nullable();
+            $table->string('issuepermission')->nullable();
+            $table->string('bookremarks')->nullable();
             $table->timestamps();
         });
     }

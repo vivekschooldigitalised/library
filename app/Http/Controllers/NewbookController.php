@@ -38,6 +38,9 @@ class NewbookController extends Controller
             return view('bookdetailreport', $data);  
     }
 
+
+
+    
     public function editAllbook($id)
 	{
 
