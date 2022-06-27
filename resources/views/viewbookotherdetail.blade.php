@@ -2,11 +2,8 @@
  @extends('layouts.app')
  @section('content')
 
- <script src="{{asset('plugins/jquery/jquery.min.js') }}"></script>
- <!-- Bootstrap 4 -->
- <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
- <!-- AdminLTE App -->
- <script src="{{asset('dist/js/adminlte.min.js') }}"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js" integrity="sha512-F636MAkMAhtTplahL9F6KmTfxTmYcAcjcCkyu0f0voT3N/6vzAuJ4Num55a0gEJ+hRLHhdz3vDvZpf6kqgEa5w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/css/bootstrap-toggle.css" integrity="sha512-9tISBnhZjiw7MV4a1gbemtB9tmPcoJ7ahj8QWIc0daBCdvlKjEA48oLlo6zALYm3037tPYYulT0YQyJIJJoyMQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
  <div class="content-wrapper">
      <!-- Content Header (Page header) -->
@@ -14,7 +11,9 @@
          <div class="container-fluid">
              <div class="row mb-2">
                  <div class="col-sm-6">
-                     <h6 class="m-0">Trinity Global School</h6>
+                     <center>
+                         <h1 class="m-0">Trinity Global School</h1>
+                     </center>
                  </div><!-- /.col -->
                  <div class="col-sm-6">
                      <ol class="breadcrumb float-sm-right">
@@ -27,33 +26,24 @@
      </div>
      <!-- /.content-header -->
 
-
-
-
-
-
-
-     <section class="content">
+     <!-- Main content -->
+     <div class="content">
          <div class="container-fluid">
              <div class="row">
-                 <div class="col-12">
+                 <!-- left column -->
+                 <div class="col-md-2">
+                 </div>
+                 <div class="col-md-12">
 
-                     <div class="card">
+                     <!-- Input addon -->
+                     <div class="card card-info">
                          <div class="card-header">
                              <h3 class="card-title">All Books Detail</h3>
                              <br>
-                             <button id="btnExport" onClick="fnExcelReport()">Export to xls</button>
+                           
                          </div>
-                         <!-- /.card-header -->
-                         <div class="card-body">
-                             <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4"><span
-                                     class="dt-down-arrow"></span></button></div>
-                         </div>
-                     </div>
-                     <div class="col-sm-12 col-md-6">
-                         <div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search"
-                                     class="form-control form-control-sm" placeholder=""
-                                     aria-controls="example1"></label></div>
+                     
+                 
                      </div>
                  </div>
                  <div class="row">
@@ -65,7 +55,7 @@
 
 
 
-                         
+                     <button id="btnExport" class="btn btn-info" onClick="fnExcelReport()">Export to xls</button><br><br>
 
 
 

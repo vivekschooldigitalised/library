@@ -308,7 +308,7 @@
               <li class="nav-item">
                 <a href="#" class="nav-link ">
                   <i class="icon-material-outline-business-center"></i>
-                  <p>Availability Of Books</p>
+                  <p>All Issued Report</p>
                 </a>
               </li>
               <!-- <li class="nav-item">
