@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\bookotherdetail;
 use App\Models\newbook;
-use App\Models\User;
+use App\Models\user;
 use App\Models\issuebook;
 use App\Models\category;
 use App\Models\newshelf;
