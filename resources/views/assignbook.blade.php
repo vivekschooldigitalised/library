@@ -66,7 +66,7 @@
                                          <label class="control-label ">Enter The Admission Number</label>
                                          <div class="input-group input-group-sm mb-5">
                                              <input type="text" class="form-control" name="admission"
-                                                 value="{{ @$isbnno }}">
+                                                 value="{{ @$isbnno }}" required>
                                              <span class="input-group-append">
                                          </div>
 
