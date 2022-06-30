@@ -66,7 +66,7 @@
                                          <label class="control-label ">Enter The Admission Number</label>
                                          <div class="input-group input-group-sm mb-5">
                                              <input type="text" class="form-control" name="admission"
-                                                 value="{{ @$isbnno }}">
+                                                 value="{{ @$isbnno }}" required>
                                              <span class="input-group-append">
                                          </div>
 
@@ -116,11 +116,13 @@
                                         <tbody>
                                          <form method="POST" action="{{route('assignbook1.store',$value1->id_no)}}">
                                           @csrf
-                                          <td>{{ $key+1 }}</td>
+                                          
                                              @foreach($allStudent as $value)
+                                             <td>{{ $key+1 }}</td>
                                              <td>{{ $value->admissionnumber }}</td>
-                                             <input type="hidden" name="admissionnumber1" value=" {{$value->id }} ">
-                                             @endforeach
+                                             <input type="hidden" name="admissionnumber1" value=" {{$ret33 = $value->id }} ">
+                                             @if($ret33 == true)
+                                             
                                              <td>{{ $value1->isbn }}</td>
                                              <td>{{ $value1->name }}</td>
                                              <td>{{ $value1->schoolbookid }} </td>
@@ -131,6 +133,8 @@
                                              <td><button type="submit" class="btn btn-warning">Issue</button></td>
                                          </form>
                                      </tbody>
+                                     @endif 
+                                     @endforeach
                                      @endforeach
 
                                  </table>

@@ -44,6 +44,7 @@ class BookotherdetailController extends Controller
         
         $data['isbnno'] = $request->admission;
         $data['isbnno1'] = $request->isbn;
+        
 		$data['allStudent'] = user::where('admissionnumber', $request->admission)->get();
 		$data['allData'] = newbook::where('isbn', $request->isbn)->get();
 
