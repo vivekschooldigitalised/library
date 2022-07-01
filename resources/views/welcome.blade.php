@@ -64,7 +64,7 @@
            
 
                 <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
-                <a href="#" class="btn btn-primary">Click here to search the book</a>
+                <a href="{{ route('book11.view') }}" class="btn btn-primary">Click here to search the book</a>
               </div>
             </div>
             <div class="col-lg-12">
@@ -72,7 +72,7 @@
               <div class="card-header">
                 
                 <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
-                <a href="#" class="btn btn-primary">Click here to issue the book</a>
+                <a href="{{route('assignbook.view')}}" class="btn btn-primary">Click here to issue the book</a>
               </div>
             </div>
 
