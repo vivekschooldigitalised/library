@@ -148,6 +148,7 @@ button:hover {
                              
                                 Number Of Pages: <input type="text" class="form-control" name="pages" ><br>
                                 Prices: <input type="text" class="form-control" name="prices"><br>
+                                Vendor Name: <input type="text" class="form-control" name="vendor"><br>
                                 
                                
                            

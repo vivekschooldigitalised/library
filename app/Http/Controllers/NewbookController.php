@@ -208,6 +208,7 @@ else
     $newbooks->pages = $request->pages;
     $newbooks->prices = $request->prices;
     $newbooks->image = $request->imagesrc;
+    $newbooks->vendor = $request->vendor;
 
     $newbooks->save();
     return redirect()->back()->with('message','New Book Inserted Successfully');

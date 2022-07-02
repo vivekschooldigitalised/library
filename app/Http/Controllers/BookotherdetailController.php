@@ -54,7 +54,7 @@ class BookotherdetailController extends Controller
             $data123 = newbook::where('isbn', $request->isbn)->first();
             $data['get'] = bookotherdetail::where('isbn_id', $data123->id)->first();
         }else{
-            $data123 = newbook::where('isbn', 9781444931853)->first();
+            $data123 = newbook::where('isbn', 9789389931495)->first();
             $data['get'] = bookotherdetail::where('isbn_id', $data123->id)->first();
 
         }
