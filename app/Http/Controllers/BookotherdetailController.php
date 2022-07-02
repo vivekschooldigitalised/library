@@ -20,6 +20,7 @@ class BookotherdetailController extends Controller
     public function BookotherdetailView(Request $request)
 	{
         // $data['categories'] = category::orderBy('id','DESC')->get();
+        
         $data['categories'] = category::all();
 
     $data['newshelf'] = newshelf::orderBy('id','ASC')->get();
@@ -112,6 +113,7 @@ ORDER BY issuebooks.id   "));
    
     public function BookotherdetailStore(Request $reqq)
     {
+
         $id_get = newbook::where('isbn', $reqq->isbn)->first();
 
         

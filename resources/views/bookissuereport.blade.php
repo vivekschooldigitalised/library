@@ -39,12 +39,16 @@
                      <div class="card card-info">
                          <div class="card-header">
                              <h3 class="card-title">Total Issued Book</h3>
+
+                             <br>
+                             <button id="btnExport" onClick="fnExcelReport()">Export to Excel</button>
                          </div>
 
                          <div class="card-body">
                              <form method="get" action="{{route('assignbook11.view')}}">
                              @csrf
-                             <table class="table">
+                             <table id="example9" class="table table-bordered table-striped dataTable dtr-inline"
+                             aria-describedby="example9_info">
                                  <thead>
                                      <tr>
                                          <!-- <th scope="col">Student Admission Number</th> -->
@@ -82,6 +86,37 @@
                                 
                              </table>
                              </form>
+
+                             <iframe id="dummyFrame" style="display:none"></iframe>
+
+                         <script>
+                         function fnExcelReport() {
+                             var table = document.getElementById('example9'); // id of table
+                             var tableHTML = table.outerHTML;
+                             var fileName = 'download.xls';
+
+                             var msie = window.navigator.userAgent.indexOf("MSIE ");
+
+                             // If Internet Explorer
+                             if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+                                 dummyFrame.document.open('txt/html', 'replace');
+                                 dummyFrame.document.write(tableHTML);
+                                 dummyFrame.document.close();
+                                 dummyFrame.focus();
+                                 return dummyFrame.document.execCommand('SaveAs', true, fileName);
+                             }
+                             //other browsers
+                             else {
+                                 var a = document.createElement('a');
+                                 tableHTML = tableHTML.replace(/  /g, '').replace(/ /g, '%20'); // replaces spaces
+                                 a.href = 'data:application/vnd.ms-excel,' + tableHTML;
+                                 a.setAttribute('download', fileName);
+                                 document.body.appendChild(a);
+                                 a.click();
+                                 document.body.removeChild(a);
+                             }
+                         }
+                         </script>
                          </div>
 
                          <!-- /input-group -->
