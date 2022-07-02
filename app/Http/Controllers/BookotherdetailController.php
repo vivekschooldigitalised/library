@@ -46,7 +46,7 @@ class BookotherdetailController extends Controller
         $data['isbnno'] = $request->admission;
         $data['isbnno1'] = $request->isbn;
         
-		$data['allStudent'] = user::where('admissionnumber', $request->admission)->get();
+		$data['allStudent'] = user::where('id_no', $request->admission)->get();
 		$data['allData'] = newbook::where('isbn', $request->isbn)->get();
 
         if ($request->isbn == true) {
@@ -59,7 +59,7 @@ class BookotherdetailController extends Controller
 
         }
 
-$data['data1'] = DB::select(DB::raw("SELECT newbooks.*,bookotherdetails.*, bookotherdetails.id AS id_no from newbooks
+$data['data1'] = DB::select(DB::raw("SELECT newbooks.*,bookotherdetails.*, bookotherdetails.id from newbooks
             LEFT JOIN bookotherdetails ON newbooks.id=bookotherdetails.isbn_id     
             WHERE newbooks.isbn=$isbnGet AND bookotherdetails.status=1 AND bookotherdetails.issuepermission='YES'"));
 

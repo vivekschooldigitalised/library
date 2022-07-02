@@ -119,7 +119,7 @@
                                           
                                              @foreach($allStudent as $value)
                                              <td>{{ $key+1 }}</td>
-                                             <td>{{ $value->admissionnumber }}</td>
+                                             <td>{{ $value->id_no }}</td>
                                              <input type="hidden" name="admissionnumber1" value=" {{$ret33 = $value->id }} ">
                                              @if($ret33 == true)
                                              
