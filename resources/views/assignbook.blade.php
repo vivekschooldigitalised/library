@@ -114,7 +114,7 @@
                                         
                                         @foreach($data1 as $key=> $value1)
                                         <tbody>
-                                         <form method="POST" action="{{route('assignbook1.store',20200003)}}">
+                                         <form method="POST" action="{{route('assignbook1.store','20200003')}}">
                                           @csrf
                                           
                                              @foreach($allStudent as $value)
