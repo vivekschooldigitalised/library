@@ -114,12 +114,12 @@
                                         
                                         @foreach($data1 as $key=> $value1)
                                         <tbody>
-                                         <form method="POST" action="{{route('assignbook1.store','20200003')}}">
+                                         <form method="POST" action="{{route('assignbook1.store',$value1->idd_no)}}">
                                           @csrf
                                           
                                              @foreach($allStudent as $value)
                                              <td>{{ $key+1 }}</td>
-                                             <td>{{ $value->20200003 }}</td>
+                                             <td>{{ $value->id_no }}</td>
                                              <input type="hidden" name="admissionnumber1" value=" {{$ret33 = $value->id }} ">
                                              @if($ret33 == true)
                                              
