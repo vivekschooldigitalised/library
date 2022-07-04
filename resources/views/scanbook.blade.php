@@ -142,7 +142,7 @@ button:hover {
                              Title Long:<input type="text" class="form-control" name="titlelong" value="{{ $res->title_long }}"><br>
                              Author: <input type="text" class="form-control" name="authors" value="{{ $res->authors['0'] }}"><br>
                              Publisher:<input type="text" class="form-control" name="publisher" value="{{ $res->publisher }}"><br>
-                             Language: <input type="text" class="form-control" name="" value="{{ $res->language }}"><br>
+                             Language: <input type="text" class="form-control" name="language" value="{{ $res->language }}"><br>
                              Edition: <input type="text" class="form-control" name="edition"><br>
                              
                              
