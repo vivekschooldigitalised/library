@@ -98,7 +98,7 @@ Route::get('book11/view', [NewbookController::class, 'BookView11'])->name('book1
 Route::get('book/view1', [NewbookController::class, 'BookView1'])->name('book.view1');
 
 
-Route::get('return/book/view', [ReturnController::class, 'ReturnBookView'])->name('book1.view');
+Route::get('return/book/view', [ReturnController::class, '                                                                          '])->name('book1.view');
 
 
 Route::get('Category/View', [CategoryController::class, 'CategoryView'])->name('category.view');
