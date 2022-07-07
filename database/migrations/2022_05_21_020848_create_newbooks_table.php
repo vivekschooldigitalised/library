@@ -17,15 +17,17 @@ class CreateNewbooksTable extends Migration
             $table->id();
             $table->string('isbn')->nullable();
             $table->string('name')->nullable();
-            $table->string('author')->nullable();
+            $table->string('authors')->nullable();
             $table->string('publisher')->nullable();
             $table->string('language')->nullable();
             $table->string('edition')->nullable();
-            $table->string('numofpages')->nullable();
-            $table->string('price')->nullable();
+            $table->string('pages')->nullable();
+            $table->string('prices')->nullable();
             $table->string('category')->nullable();
             $table->string('shelf')->nullable();
             $table->string('totalbooks')->nullable();
+            $table->string('image')->nullable();
+            $table->string('vendor')->nullable();
             $table->timestamps();
         });
     }
