@@ -154,19 +154,16 @@
 
 
                                  <label class="control-label ">Book Permission</label>
+
                                  <div class="input-group input-group-sm mb-3">
-                                     <select name="issuepermission" class="form-control">
-                                        
-                                         <option value="YES">YES</option>
-                                         <option value="NO">NO</option>
-                                         
-                                         
-                                     </select>
-                                     <span class="input-group-append">
-                                        </div>
 
-
-                                 <label class="control-label ">Book Remarks</label>
+                                 <select name="issuepermission" class="form-control">
+                                 <option value="YES">YES</option>
+                                 <option value="NO">NO</option>
+                                 </select>
+                                 <span class="input-group-append">
+                               </div>
+                               <label class="control-label ">Book Remarks</label>
                                  <div class="input-group input-group-sm mb-3">
                                      <select name="bookremarks" class="form-control">
                                          @foreach($newbookremarks as $newbookremarks)
