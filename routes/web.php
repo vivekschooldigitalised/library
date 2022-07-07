@@ -30,7 +30,7 @@ use App\Http\Controllers\CreateremarksController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/library', function () {
     return view('welcome');
 });
 

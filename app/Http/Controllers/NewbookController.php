@@ -92,17 +92,7 @@ class NewbookController extends Controller
     }
 
     public function updateotherbookdetail(Request $requesttttt)
-	{
-        $check = bookotherdetail::where([
-            ['schoolbookid', '=', $requesttttt->schoolbookid],
-            ])->first();
-    
-            if($check)
-                {
-                    return "School Book Id is - Already Exists";
-                    
-            }
-    else
+
     {
 		$newbook_update1 = bookotherdetail::find($requesttttt->id);
 		$newbook_update1->category = $requesttttt->category;
@@ -122,7 +112,7 @@ class NewbookController extends Controller
 
         return redirect()->back()->with('message','Updated Successfully');
 	
-	}
+	
 }
 
 
