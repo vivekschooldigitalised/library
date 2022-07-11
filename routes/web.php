@@ -12,7 +12,7 @@ use App\Http\Controllers\BookotherdetailController;
 use App\Http\Controllers\ReturnController;
 use App\Http\Controllers\bookotherdetails;
 use App\Http\Controllers\LibraryController;
-use App\Http\Controllers\viewbookshelfwise;
+use library\App\Http\Controllers\viewbookshelfwise;
 use App\Http\Controllers\CreateremarksController;
 
 
