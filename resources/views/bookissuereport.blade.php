@@ -71,7 +71,7 @@
                                     
                                      @if($ret == false)
                                      <tr>
-                                     <td>{{ $value11->admissionnumber }}</td>                     
+                                     <td>{{ $value11->id_no }}</td>                     
                                      <td>{{ $value11->isbn }}</td> 
                                      <td>{{ $value11->name }}</td> 
                                      <td>{{ $value11->schoolbookid }}</td>  
